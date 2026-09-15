@@ -606,7 +606,9 @@ def main():
         font_color=TEXT_COLOR,
         select_menu=False,
         filter_menu=False,
-        cdn_resources="in_line",
+        # Keep the generated GitHub Pages document small. Embedding the full
+        # vis-network bundle makes index.html unnecessarily large.
+        cdn_resources="remote",
     )
 
     # --------------------------------------------------------
