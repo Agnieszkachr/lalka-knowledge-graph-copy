@@ -79,6 +79,7 @@ they cannot be reconstructed reliably from the PBL hierarchy.
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from collections import defaultdict
 
@@ -213,6 +214,25 @@ def edge_relationship(edge):
         or edge.get("label")
         or "UNKNOWN"
     )
+
+
+def edition_display_title(title):
+    """Return an edition title without technical PBL title qualifiers."""
+
+    value = (title or "Lalka").strip()
+    value = re.sub(
+        r"^\[Lalka\]\s*",
+        "",
+        value,
+        flags=re.IGNORECASE,
+    )
+    value = re.sub(
+        r"\.\s*\[Powieść\]\s*$",
+        "",
+        value,
+        flags=re.IGNORECASE,
+    )
+    return value.strip() or "Lalka"
 
 
 # =============================================================================
@@ -677,7 +697,8 @@ class PresentationGraphBuilder:
             if publisher_names:
                 label_parts.append(" / ".join(publisher_names))
             label_suffix = ", ".join(label_parts)
-            label = "Lalka" + (f" ({label_suffix})" if label_suffix else "")
+            display_title = edition_display_title(edition.get("title"))
+            label = display_title + (f" ({label_suffix})" if label_suffix else "")
 
             properties = {
                 key: value
