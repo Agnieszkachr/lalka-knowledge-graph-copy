@@ -18,7 +18,7 @@ LOGO_FILE = PROJECT_ROOT / "assets" / "pbl-logo.png"
 BACKGROUND_IMAGE_FILE = PROJECT_ROOT / "assets" / "lalka-background.jpg"
 
 OUTPUT_DIR = PROJECT_ROOT / "docs"
-OUTPUT_FILE = OUTPUT_DIR / "lalka_graph.html"
+OUTPUT_FILE = OUTPUT_DIR / "index.html"
 
 
 # ============================================================
@@ -33,6 +33,7 @@ EDGE_COLOR = "#b9b3aa"
 COLORS = {
     "Work": "#e2a84a",
     "Adaptation": "#d95b67",
+    "Edition": "#3478a8",
     "Person": "#9a5b91",
 
     # Publication and RelatedRecord are intentionally
@@ -51,6 +52,7 @@ COLORS = {
 NODE_SIZES = {
     "Work": 38,
     "Adaptation": 29,
+    "Edition": 19,
     "Person": 19,
     "Publication": 17,
     "RelatedRecord": 17,
@@ -66,6 +68,7 @@ NODE_SIZES = {
 GRAPH_LABEL_LENGTHS = {
     "Work": 20,
     "Adaptation": 38,
+    "Edition": 48,
     "Person": 30,
     "Publication": 42,
     "RelatedRecord": 42,
@@ -81,6 +84,7 @@ GRAPH_LABEL_LENGTHS = {
 TYPE_LABELS = {
     "Work": "Utwór",
     "Adaptation": "Adaptacja",
+    "Edition": "Wydanie",
     "Person": "Osoba",
     "Publication": "Publikacja",
     "RelatedRecord": "Rekord powiązany",
@@ -91,6 +95,7 @@ TYPE_LABELS = {
 
 RELATIONSHIP_LABELS = {
     "ADAPTED_AS": "adaptacja",
+    "HAS_EDITION": "wydanie",
     "AUTHORED_BY": "autor",
     "CREATED_BY": "twórca",
     "FROM_SOURCE": "źródło",
@@ -105,6 +110,11 @@ RELATIONSHIP_LABELS = {
 # ============================================================
 
 EDGE_STYLES = {
+    "HAS_EDITION": {
+        "width": 1.4,
+        "color": "#9aaebd",
+        "label": "",
+    },
     "ADAPTED_AS": {
         "width": 2.6,
         "color": "#87745e",
@@ -257,6 +267,9 @@ def get_node_title(node):
         {},
     )
 
+    if get_node_type(node) == "Edition":
+        return clean_html(node.get("label") or properties.get("title"))
+
     # --------------------------------------------------------
     # Persons
     # --------------------------------------------------------
@@ -395,6 +408,29 @@ def get_metadata(node):
 
     if publication_year is not None:
         metadata["Rok publikacji"] = publication_year
+
+    if get_node_type(node) == "Edition":
+        edition_fields = (
+            ("Tytuł w PBL", "title"),
+            ("Wydawca", "publisher_names"),
+            ("Miejsce", "publisher_city"),
+            ("Oznaczenie wydania", "edition_statement"),
+            ("Tomy", "volumes"),
+            ("Opis fizyczny", "physical_description"),
+            ("Seria", "series"),
+            ("Numer BN", "bn_number"),
+        )
+        for label, key in edition_fields:
+            value = properties.get(key)
+            if value:
+                if isinstance(value, list):
+                    value = " / ".join(str(item) for item in value)
+                metadata[label] = clean_html(value)
+
+        if properties.get("publication_year_source") == "inferred_from_physical_description":
+            metadata["Ustalenie roku"] = "rok wywnioskowany z opisu fizycznego"
+
+        metadata["Weryfikacja"] = "zatwierdzone redakcyjnie"
 
     # --------------------------------------------------------
     # Source
@@ -726,6 +762,8 @@ def main():
             borderWidth=prepared["borderWidth"],
             shadow=prepared["shadow"],
             originalColor=prepared["originalColor"],
+            nodeType=node_type,
+            publicationYear=node.get("properties", {}).get("publication_year"),
         )
 
         # ----------------------------------------------------
@@ -794,6 +832,7 @@ def main():
             # when the graph is reset.
             originalWidth=style["width"],
             originalColor=style["color"],
+            relationship=relationship,
         )
 
     # ========================================================
@@ -975,6 +1014,51 @@ def main():
         .graph-header-subtitle {{
             font-size: 12px;
             color: #77736e;
+        }}
+
+        .view-controls {{
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1002;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px;
+            border-radius: 10px;
+            background: rgba(248, 246, 242, 0.96);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.10);
+        }}
+
+        .view-controls button {{
+            border: 1px solid #d2cbc1;
+            border-radius: 7px;
+            background: transparent;
+            color: {TEXT_COLOR};
+            padding: 7px 11px;
+            font: inherit;
+            font-size: 12px;
+            cursor: pointer;
+        }}
+
+        .view-controls button.active {{
+            color: #fff;
+            border-color: #3478a8;
+            background: #3478a8;
+        }}
+
+        .edition-grouping {{
+            display: none;
+            align-items: center;
+            gap: 6px;
+            margin-left: 4px;
+            padding-left: 10px;
+            border-left: 1px solid #d2cbc1;
+        }}
+
+        .edition-grouping.visible {{
+            display: flex;
         }}
 
 
@@ -1184,6 +1268,12 @@ def main():
                 font-size: 16px;
             }}
 
+            .view-controls {{
+                top: 68px;
+                max-width: calc(100vw - 20px);
+                white-space: nowrap;
+            }}
+
             .pbl-logo {{
                 top: 10px;
                 right: 10px;
@@ -1238,6 +1328,15 @@ def main():
 
     {logo_html}
 
+    <div class="view-controls" aria-label="Widok grafu">
+        <button id="view-all" class="active" type="button">Cały graf</button>
+        <button id="view-editions" type="button">Wydania (55)</button>
+        <div id="edition-grouping" class="edition-grouping">
+            <button id="group-chronology" class="active" type="button">Chronologicznie</button>
+            <button id="group-publishers" type="button">Według wydawcy</button>
+        </div>
+    </div>
+
 
     <!-- ====================================================
          Legend
@@ -1263,6 +1362,14 @@ def main():
                 style="background:{COLORS["Adaptation"]};"
             ></span>
             Adaptacja
+        </div>
+
+        <div class="legend-item">
+            <span
+                class="legend-dot"
+                style="background:{COLORS["Edition"]};"
+            ></span>
+            Wydanie
         </div>
 
         <div class="legend-item">
@@ -1339,6 +1446,126 @@ def main():
 
         const detailsData = {details_json};
 
+        let currentView = "all";
+        let currentEditionGrouping = "chronology";
+
+        function setActiveButton(id, active) {{
+            document.getElementById(id).classList.toggle("active", active);
+        }}
+
+        function ensureYearMarkers(years) {{
+            const existingIds = new Set(network.body.data.nodes.getIds());
+            years.forEach(year => {{
+                const id = `timeline:${{year}}`;
+                if (!existingIds.has(id)) {{
+                    network.body.data.nodes.add({{
+                        id: id,
+                        label: String(year),
+                        nodeType: "TimelineMarker",
+                        shape: "box",
+                        color: {{background: "#efe8dd", border: "#c3b7a7"}},
+                        font: {{face: "Arial", size: 18, color: "#50504f", bold: true}},
+                        margin: 10,
+                        hidden: true,
+                        physics: false,
+                        fixed: true
+                    }});
+                }}
+            }});
+        }}
+
+        function showAllGraph() {{
+            currentView = "all";
+            setActiveButton("view-all", true);
+            setActiveButton("view-editions", false);
+            document.getElementById("edition-grouping").classList.remove("visible");
+
+            network.body.data.nodes.update(network.body.data.nodes.get().map(node => ({{
+                id: node.id,
+                hidden: node.nodeType === "TimelineMarker",
+                fixed: false,
+                physics: node.nodeType !== "TimelineMarker"
+            }})));
+            network.body.data.edges.update(network.body.data.edges.get().map(edge => ({{
+                id: edge.id,
+                hidden: false
+            }})));
+            network.setOptions({{physics: {{enabled: true}}}});
+            network.fit({{animation: {{duration: 500}}}});
+        }}
+
+        function showEditions(grouping) {{
+            currentView = "editions";
+            currentEditionGrouping = grouping;
+            setActiveButton("view-all", false);
+            setActiveButton("view-editions", true);
+            setActiveButton("group-chronology", grouping === "chronology");
+            setActiveButton("group-publishers", grouping === "publishers");
+            document.getElementById("edition-grouping").classList.add("visible");
+
+            const allNodes = network.body.data.nodes.get();
+            const editions = allNodes
+                .filter(node => node.nodeType === "Edition")
+                .sort((a, b) => (a.publicationYear - b.publicationYear) || String(a.id).localeCompare(String(b.id)));
+            const editionIds = new Set(editions.map(node => node.id));
+            const years = [...new Set(editions.map(node => node.publicationYear))];
+            ensureYearMarkers(years);
+
+            if (grouping === "chronology") {{
+                const byYear = {{}};
+                editions.forEach(node => (byYear[node.publicationYear] ||= []).push(node));
+                const updates = network.body.data.nodes.get().map(node => ({{
+                    id: node.id,
+                    hidden: node.nodeType !== "Edition" && node.nodeType !== "TimelineMarker" && node.id !== "record:109715",
+                    fixed: true,
+                    physics: false
+                }}));
+
+                updates.push({{id: "record:109715", x: 0, y: -700, hidden: false}});
+                years.forEach((year, yearIndex) => {{
+                    const column = yearIndex % 7;
+                    const row = Math.floor(yearIndex / 7);
+                    const x = -870 + column * 290;
+                    const y = -430 + row * 470;
+                    updates.push({{id: `timeline:${{year}}`, x: x, y: y, hidden: false}});
+                    byYear[year].forEach((edition, index) => {{
+                        updates.push({{id: edition.id, x: x, y: y + 90 + index * 72, hidden: false}});
+                    }});
+                }});
+                network.body.data.nodes.update(updates);
+                network.body.data.edges.update(network.body.data.edges.get().map(edge => ({{id: edge.id, hidden: true}})));
+                network.setOptions({{physics: {{enabled: false}}}});
+            }} else {{
+                const editionPublisherIds = new Set();
+                network.body.data.edges.get().forEach(edge => {{
+                    if (edge.relationship === "PUBLISHED_BY" && editionIds.has(edge.from)) {{
+                        editionPublisherIds.add(edge.to);
+                    }}
+                }});
+                const visibleIds = new Set(["record:109715", ...editionIds, ...editionPublisherIds]);
+                network.body.data.nodes.update(network.body.data.nodes.get().map(node => ({{
+                    id: node.id,
+                    hidden: !visibleIds.has(node.id),
+                    fixed: false,
+                    physics: visibleIds.has(node.id)
+                }})));
+                network.body.data.edges.update(network.body.data.edges.get().map(edge => ({{
+                    id: edge.id,
+                    hidden: !(visibleIds.has(edge.from) && visibleIds.has(edge.to) &&
+                        (edge.relationship === "HAS_EDITION" || edge.relationship === "PUBLISHED_BY"))
+                }})));
+                network.setOptions({{physics: {{enabled: true}}}});
+            }}
+
+            document.getElementById("details-panel").classList.remove("visible");
+            setTimeout(() => network.fit({{animation: {{duration: 500}}}}), 100);
+        }}
+
+        document.getElementById("view-all").addEventListener("click", showAllGraph);
+        document.getElementById("view-editions").addEventListener("click", () => showEditions(currentEditionGrouping));
+        document.getElementById("group-chronology").addEventListener("click", () => showEditions("chronology"));
+        document.getElementById("group-publishers").addEventListener("click", () => showEditions("publishers"));
+
 
         // ==================================================
         // HTML escaping
@@ -1371,6 +1598,7 @@ def main():
             const labels = {{
                 "Work": "Utwór",
                 "Adaptation": "Adaptacja",
+                "Edition": "Wydanie",
                 "Person": "Osoba",
                 "Publication": "Publikacja",
                 "RelatedRecord": "Rekord powiązany",
@@ -1837,7 +2065,9 @@ def main():
                     // Start physics again.
                     network.setOptions({{
                         physics: {{
-                            enabled: true
+                            enabled:
+                                currentView === "all" ||
+                                currentEditionGrouping === "publishers"
                         }}
                     }});
                 }}

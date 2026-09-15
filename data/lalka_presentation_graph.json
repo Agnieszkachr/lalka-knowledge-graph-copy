@@ -4,6 +4,7 @@
     "layer": "presentation",
     "source": "Polska Bibliografia Literacka",
     "source_graph": "lalka_graph.json",
+    "curated_editions": "lalka_editions_verified.json",
     "root": "record:109715",
     "description": "A simplified presentation layer of the Lalka Knowledge Graph designed for interactive visual exploration.",
     "model": {
@@ -11,6 +12,7 @@
         "Work",
         "Person",
         "Adaptation",
+        "Edition",
         "Publication",
         "Event",
         "Publisher",
@@ -19,6 +21,7 @@
       "relationships": [
         "CREATED_BY",
         "ADAPTED_AS",
+        "HAS_EDITION",
         "HAS_RECORD",
         "RELATED_TO",
         "AUTHORED_BY",
@@ -33,13 +36,14 @@
       ]
     },
     "statistics": {
-      "nodes": 256,
-      "edges": 312,
+      "nodes": 354,
+      "edges": 425,
       "node_types": {
         "Adaptation": 2,
+        "Edition": 55,
         "Person": 75,
         "Publication": 104,
-        "Publisher": 10,
+        "Publisher": 53,
         "Source": 64,
         "Work": 1
       },
@@ -48,8 +52,9 @@
         "AUTHORED_BY": 100,
         "CREATED_BY": 1,
         "FROM_SOURCE": 94,
+        "HAS_EDITION": 55,
         "HAS_RECORD": 9,
-        "PUBLISHED_BY": 11,
+        "PUBLISHED_BY": 69,
         "RELATED_TO": 95
       }
     }
@@ -2103,6 +2108,1971 @@
       },
       "presentation_type": "Adaptation",
       "original_type": "ScreenAdaptation"
+    },
+    {
+      "id": "record:2736",
+      "type": "Edition",
+      "label": "Lalka (1988, Kriterion / [Europa])",
+      "properties": {
+        "pbl_id": 2736,
+        "title": "[Lalka] A babu. Regeny",
+        "publication_year": 1988,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "physical_description": "479 s.",
+        "qualification_rule": "Tytuł ma katalogową formę „[Lalka] …”",
+        "review_status": "approved",
+        "review_flags": "więcej niż jeden wydawca; prawdopodobny przekład",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Kriterion",
+          "[Europa]"
+        ],
+        "publisher_city": [
+          "Bucuresti",
+          "[Budapest]"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:669",
+      "type": "Publisher",
+      "label": "Kriterion",
+      "properties": {
+        "pbl_id": 669,
+        "city": "Bucuresti",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "publisher:671",
+      "type": "Publisher",
+      "label": "[Europa]",
+      "properties": {
+        "pbl_id": 671,
+        "city": "[Budapest]",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:90139",
+      "type": "Edition",
+      "label": "Lalka (1990, Krajowa Agencja Wydawnicza)",
+      "properties": {
+        "pbl_id": 90139,
+        "title": "[Lalka] Kukla",
+        "publication_year": 1990,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "volumes": "1-2",
+        "physical_description": "463 s.; 446 s.",
+        "qualification_rule": "Tytuł ma katalogową formę „[Lalka] …”",
+        "review_status": "approved",
+        "review_flags": "prawdopodobny przekład; publikacja wielotomowa lub oznaczenie tomów",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Krajowa Agencja Wydawnicza"
+        ],
+        "publisher_city": [
+          "Warszawa"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:59",
+      "type": "Publisher",
+      "label": "Krajowa Agencja Wydawnicza",
+      "properties": {
+        "pbl_id": 59,
+        "city": "Warszawa",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:90141",
+      "type": "Edition",
+      "label": "Lalka (1990, Dom Książki)",
+      "properties": {
+        "pbl_id": 90141,
+        "title": "Lalka",
+        "publication_year": 1990,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "volumes": "1-2",
+        "physical_description": "452 s.; 439 s.",
+        "qualification_rule": "Tytuł dokładnie „Lalka”",
+        "review_status": "approved",
+        "review_flags": "publikacja wielotomowa lub oznaczenie tomów",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Dom Książki"
+        ],
+        "publisher_city": [
+          "Kraków"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:1212",
+      "type": "Publisher",
+      "label": "Dom Książki",
+      "properties": {
+        "pbl_id": 1212,
+        "city": "Kraków",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:120811",
+      "type": "Edition",
+      "label": "Lalka (1991, Labos)",
+      "properties": {
+        "pbl_id": 120811,
+        "title": "Lalka",
+        "publication_year": 1991,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "volumes": "1-2",
+        "physical_description": "435; 415 s.",
+        "qualification_rule": "Tytuł dokładnie „Lalka”",
+        "review_status": "approved",
+        "review_flags": "publikacja wielotomowa lub oznaczenie tomów",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Labos"
+        ],
+        "publisher_city": [
+          "Warszawa"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:2642",
+      "type": "Publisher",
+      "label": "Labos",
+      "properties": {
+        "pbl_id": 2642,
+        "city": "Warszawa",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:120843",
+      "type": "Edition",
+      "label": "Lalka (1991, Książka i Wiedza)",
+      "properties": {
+        "pbl_id": 120843,
+        "title": "Lalka",
+        "publication_year": 1991,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "volumes": "1-3",
+        "physical_description": "356; 380; 337 s.",
+        "qualification_rule": "Tytuł dokładnie „Lalka”",
+        "review_status": "approved",
+        "review_flags": "publikacja wielotomowa lub oznaczenie tomów",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Książka i Wiedza"
+        ],
+        "publisher_city": [
+          "Warszawa"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:81",
+      "type": "Publisher",
+      "label": "Książka i Wiedza",
+      "properties": {
+        "pbl_id": 81,
+        "city": "Warszawa",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:120847",
+      "type": "Edition",
+      "label": "Lalka (1991, Zakład Narodowy im. Ossolińskich)",
+      "properties": {
+        "pbl_id": 120847,
+        "title": "Lalka",
+        "publication_year": 1991,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "volumes": "1-2",
+        "physical_description": "CXIX, 533 s., il. portr.; 606 s., mapa",
+        "series": "(Biblioteka Narodowa. Seria 1, nr 262)",
+        "qualification_rule": "Tytuł dokładnie „Lalka”",
+        "review_status": "approved",
+        "review_flags": "publikacja wielotomowa lub oznaczenie tomów",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Zakład Narodowy im. Ossolińskich"
+        ],
+        "publisher_city": [
+          "Wrocław"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:87",
+      "type": "Publisher",
+      "label": "Zakład Narodowy im. Ossolińskich",
+      "properties": {
+        "pbl_id": 87,
+        "city": "Wrocław",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:212058",
+      "type": "Edition",
+      "label": "Lalka (1993, Hippocrene / Dedalus)",
+      "properties": {
+        "pbl_id": 212058,
+        "title": "[Lalka] The doll",
+        "publication_year": 1993,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "physical_description": "[10], 702 s.",
+        "qualification_rule": "Tytuł ma katalogową formę „[Lalka] …”",
+        "review_status": "approved",
+        "review_flags": "więcej niż jeden wydawca; prawdopodobny przekład",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Hippocrene",
+          "Dedalus"
+        ],
+        "publisher_city": [
+          "New York",
+          "Huntingdon"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:13523",
+      "type": "Publisher",
+      "label": "Hippocrene",
+      "properties": {
+        "pbl_id": 13523,
+        "city": "New York",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "publisher:13543",
+      "type": "Publisher",
+      "label": "Dedalus",
+      "properties": {
+        "pbl_id": 13543,
+        "city": "Huntingdon",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:212099",
+      "type": "Edition",
+      "label": "Lalka (1993, Constelatia)",
+      "properties": {
+        "pbl_id": 212099,
+        "title": "[Lalka] Papusa",
+        "publication_year": 1993,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "volumes": "1-2",
+        "physical_description": "[Instytut Bibliograficzny. Biblioteka Narodowa]",
+        "qualification_rule": "Tytuł ma katalogową formę „[Lalka] …”",
+        "review_status": "approved",
+        "review_flags": "prawdopodobny przekład; publikacja wielotomowa lub oznaczenie tomów",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Constelatia"
+        ],
+        "publisher_city": [
+          "Bucuresti"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:13583",
+      "type": "Publisher",
+      "label": "Constelatia",
+      "properties": {
+        "pbl_id": 13583,
+        "city": "Bucuresti",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:212918",
+      "type": "Edition",
+      "label": "Lalka (1993, Veche)",
+      "properties": {
+        "pbl_id": 212918,
+        "title": "[Lalka] Kukla. Roman",
+        "publication_year": 1993,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "physical_description": "669 s. [Instytut Bibliograficzny. Biblioteka Narodowa]",
+        "qualification_rule": "Tytuł ma katalogową formę „[Lalka] …”",
+        "review_status": "approved",
+        "review_flags": "prawdopodobny przekład",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Veche"
+        ],
+        "publisher_city": [
+          "Moskva"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:12803",
+      "type": "Publisher",
+      "label": "Veche",
+      "properties": {
+        "pbl_id": 12803,
+        "city": "Moskva",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:261430",
+      "type": "Edition",
+      "label": "Lalka (1994, Beskidzka Oficyna Wydawnicza)",
+      "properties": {
+        "pbl_id": 261430,
+        "title": "Lalka",
+        "publication_year": 1994,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "volumes": "1-2",
+        "physical_description": "317 s., [4] s. tabl.; 308 s., [4] s. tabl.",
+        "qualification_rule": "Tytuł dokładnie „Lalka”",
+        "review_status": "approved",
+        "review_flags": "publikacja wielotomowa lub oznaczenie tomów",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Beskidzka Oficyna Wydawnicza"
+        ],
+        "publisher_city": [
+          "Bielsko-Biała"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:1400",
+      "type": "Publisher",
+      "label": "Beskidzka Oficyna Wydawnicza",
+      "properties": {
+        "pbl_id": 1400,
+        "city": "Bielsko-Biała",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:261437",
+      "type": "Edition",
+      "label": "Lalka (1994, Elipsa 2)",
+      "properties": {
+        "pbl_id": 261437,
+        "title": "Lalka",
+        "publication_year": 1994,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "physical_description": "(3 t. w 1 wol.) 602 s., [24] s.",
+        "qualification_rule": "Tytuł dokładnie „Lalka”",
+        "review_status": "approved",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Elipsa 2"
+        ],
+        "publisher_city": [
+          "Warszawa"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:14218",
+      "type": "Publisher",
+      "label": "Elipsa 2",
+      "properties": {
+        "pbl_id": 14218,
+        "city": "Warszawa",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:261439",
+      "type": "Edition",
+      "label": "Lalka (1994, Marba Crown)",
+      "properties": {
+        "pbl_id": 261439,
+        "title": "Lalka",
+        "publication_year": 1994,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "physical_description": "(2 t. w 1 wol.) 615 s., il.",
+        "qualification_rule": "Tytuł dokładnie „Lalka”",
+        "review_status": "approved",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Marba Crown"
+        ],
+        "publisher_city": [
+          "Warszawa"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:4240",
+      "type": "Publisher",
+      "label": "Marba Crown",
+      "properties": {
+        "pbl_id": 4240,
+        "city": "Warszawa",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:266220",
+      "type": "Edition",
+      "label": "Lalka (1994, Polymja)",
+      "properties": {
+        "pbl_id": 266220,
+        "title": "[Lalka]  Kukla. Roman v dvuch chastjach",
+        "publication_year": 1994,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "volumes": "1-2",
+        "physical_description": "460 s.; 443 s.",
+        "qualification_rule": "Tytuł ma katalogową formę „[Lalka] …”",
+        "review_status": "approved",
+        "review_flags": "prawdopodobny przekład; publikacja wielotomowa lub oznaczenie tomów",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Polymja"
+        ],
+        "publisher_city": [
+          "Mihnsk"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:4710",
+      "type": "Publisher",
+      "label": "Polymja",
+      "properties": {
+        "pbl_id": 4710,
+        "city": "Mihnsk",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:287140",
+      "type": "Edition",
+      "label": "Lalka (1994, Rosma)",
+      "properties": {
+        "pbl_id": 287140,
+        "title": "[Lalka] Lele. Romanas",
+        "publication_year": 1994,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "edition_statement": "2",
+        "volumes": "1-2",
+        "physical_description": "487 s.; 446 s.",
+        "qualification_rule": "Tytuł ma katalogową formę „[Lalka] …”",
+        "review_status": "approved",
+        "review_flags": "prawdopodobny przekład; publikacja wielotomowa lub oznaczenie tomów",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Rosma"
+        ],
+        "publisher_city": [
+          "Vilnius"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:25282",
+      "type": "Publisher",
+      "label": "Rosma",
+      "properties": {
+        "pbl_id": 25282,
+        "city": "Vilnius",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:316670",
+      "type": "Edition",
+      "label": "Lalka (1995, Państwowy Instytut Wydawniczy)",
+      "properties": {
+        "pbl_id": 316670,
+        "title": "Lalka",
+        "publication_year": 1995,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "physical_description": "812 s.",
+        "qualification_rule": "Tytuł dokładnie „Lalka”",
+        "review_status": "approved",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Państwowy Instytut Wydawniczy"
+        ],
+        "publisher_city": [
+          "Warszawa"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:84",
+      "type": "Publisher",
+      "label": "Państwowy Instytut Wydawniczy",
+      "properties": {
+        "pbl_id": 84,
+        "city": "Warszawa",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:316722",
+      "type": "Edition",
+      "label": "Lalka (1995, Wydawnictwo Dolnośląskie)",
+      "properties": {
+        "pbl_id": 316722,
+        "title": "Lalka. Powieść",
+        "publication_year": 1995,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "edition_statement": "1 w tej edycji",
+        "volumes": "1-2",
+        "physical_description": "634 s.; 624 s.",
+        "series": "(Biblioteka Klasyki)",
+        "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+        "review_status": "approved",
+        "review_flags": "publikacja wielotomowa lub oznaczenie tomów",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Wydawnictwo Dolnośląskie"
+        ],
+        "publisher_city": [
+          "Wrocław"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:162",
+      "type": "Publisher",
+      "label": "Wydawnictwo Dolnośląskie",
+      "properties": {
+        "pbl_id": 162,
+        "city": "Wrocław",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:361291",
+      "type": "Edition",
+      "label": "Lalka (1996, Eventus)",
+      "properties": {
+        "pbl_id": 361291,
+        "title": "Lalka. Powieść",
+        "publication_year": 1996,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "physical_description": "723 s.",
+        "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+        "review_status": "approved",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Eventus"
+        ],
+        "publisher_city": [
+          "Kraków"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:21800",
+      "type": "Publisher",
+      "label": "Eventus",
+      "properties": {
+        "pbl_id": 21800,
+        "city": "Kraków",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:361538",
+      "type": "Edition",
+      "label": "Lalka (1996, Podsiedlik-Raniowski i Spółka)",
+      "properties": {
+        "pbl_id": 361538,
+        "title": "Lalka",
+        "publication_year": 1996,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "physical_description": "749 s.",
+        "series": "(Biblioteka Klasyki Polskiej / Podsiedlik-Raniowski i Spółka)",
+        "qualification_rule": "Tytuł dokładnie „Lalka”",
+        "review_status": "approved",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Podsiedlik-Raniowski i Spółka"
+        ],
+        "publisher_city": [
+          "Warszawa"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:27641",
+      "type": "Publisher",
+      "label": "Podsiedlik-Raniowski i Spółka",
+      "properties": {
+        "pbl_id": 27641,
+        "city": "Warszawa",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:365368",
+      "type": "Edition",
+      "label": "Lalka (1996, Central European Univ. Press)",
+      "properties": {
+        "pbl_id": 365368,
+        "title": "[Lalka] The doll",
+        "publication_year": 1996,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "physical_description": "XV, 683 s.",
+        "qualification_rule": "Tytuł ma katalogową formę „[Lalka] …”",
+        "review_status": "approved",
+        "review_flags": "prawdopodobny przekład",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Central European Univ. Press"
+        ],
+        "publisher_city": [
+          "Budapest, London"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:28169",
+      "type": "Publisher",
+      "label": "Central European Univ. Press",
+      "properties": {
+        "pbl_id": 28169,
+        "city": "Budapest, London",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:365374",
+      "type": "Edition",
+      "label": "Lalka (1996, Chudozhestvennaja Literatura)",
+      "properties": {
+        "pbl_id": 365374,
+        "title": "[Lalka] Kukla",
+        "publication_year": 1996,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "physical_description": "668 s.",
+        "qualification_rule": "Tytuł ma katalogową formę „[Lalka] …”",
+        "review_status": "approved",
+        "review_flags": "prawdopodobny przekład",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Chudozhestvennaja Literatura"
+        ],
+        "publisher_city": [
+          "Moskva"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:4807",
+      "type": "Publisher",
+      "label": "Chudozhestvennaja Literatura",
+      "properties": {
+        "pbl_id": 4807,
+        "city": "Moskva",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:372477",
+      "type": "Edition",
+      "label": "Lalka (1997, Wydawnictwo \"Kama\")",
+      "properties": {
+        "pbl_id": 372477,
+        "title": "Lalka",
+        "publication_year": 1997,
+        "publication_year_source": "inferred_from_physical_description",
+        "volumes": "1-2",
+        "physical_description": "[1997], 520 s. ; 476 s.",
+        "series": "(Lektury Szkolne z Opracowaniem)",
+        "qualification_rule": "Tytuł dokładnie „Lalka”",
+        "review_status": "approved",
+        "review_flags": "rok tylko w opisie fizycznym; publikacja wielotomowa lub oznaczenie tomów",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Wydawnictwo \"Kama\""
+        ],
+        "publisher_city": [
+          "Warszawa"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:8564",
+      "type": "Publisher",
+      "label": "Wydawnictwo \"Kama\"",
+      "properties": {
+        "pbl_id": 8564,
+        "city": "Warszawa",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:372597",
+      "type": "Edition",
+      "label": "Lalka (1997, Siedmioróg)",
+      "properties": {
+        "pbl_id": 372597,
+        "title": "Lalka",
+        "publication_year": 1997,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "physical_description": "679 s.",
+        "series": "(Narodowa Biblioteka Lektur Szkolnych)",
+        "qualification_rule": "Tytuł dokładnie „Lalka”",
+        "review_status": "approved",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Siedmioróg"
+        ],
+        "publisher_city": [
+          "Wrocław"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:2303",
+      "type": "Publisher",
+      "label": "Siedmioróg",
+      "properties": {
+        "pbl_id": 2303,
+        "city": "Wrocław",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:388451",
+      "type": "Edition",
+      "label": "Lalka (1998, Świat Książki)",
+      "properties": {
+        "pbl_id": 388451,
+        "title": "Lalka",
+        "publication_year": 1998,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "volumes": "1-3",
+        "physical_description": "349 s. ; 378 s. ; 314 s.",
+        "qualification_rule": "Tytuł dokładnie „Lalka”",
+        "review_status": "approved",
+        "review_flags": "publikacja wielotomowa lub oznaczenie tomów",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Świat Książki"
+        ],
+        "publisher_city": [
+          "Warszawa"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:20551",
+      "type": "Publisher",
+      "label": "Świat Książki",
+      "properties": {
+        "pbl_id": 20551,
+        "city": "Warszawa",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:388987",
+      "type": "Edition",
+      "label": "Lalka (1998, Prószyński i S-ka)",
+      "properties": {
+        "pbl_id": 388987,
+        "title": "Lalka",
+        "publication_year": 1998,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "volumes": "1-2",
+        "physical_description": "474 s., ; 467 s.",
+        "series": "(Klasyka Polska)",
+        "qualification_rule": "Tytuł dokładnie „Lalka”",
+        "review_status": "approved",
+        "review_flags": "publikacja wielotomowa lub oznaczenie tomów",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Prószyński i S-ka"
+        ],
+        "publisher_city": [
+          "Warszawa"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:4786",
+      "type": "Publisher",
+      "label": "Prószyński i S-ka",
+      "properties": {
+        "pbl_id": 4786,
+        "city": "Warszawa",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:389200",
+      "type": "Edition",
+      "label": "Lalka (1998, Zielona Sowa)",
+      "properties": {
+        "pbl_id": 389200,
+        "title": "Lalka",
+        "publication_year": 1998,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "physical_description": "596 s.",
+        "qualification_rule": "Tytuł dokładnie „Lalka”",
+        "review_status": "approved",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Zielona Sowa"
+        ],
+        "publisher_city": [
+          "Kraków"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:26180",
+      "type": "Publisher",
+      "label": "Zielona Sowa",
+      "properties": {
+        "pbl_id": 26180,
+        "city": "Kraków",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:389554",
+      "type": "Edition",
+      "label": "Lalka (1998, Zakład Narodowy im. Ossolińskich)",
+      "properties": {
+        "pbl_id": 389554,
+        "title": "Lalka",
+        "publication_year": 1998,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "edition_statement": "2 przejrzane",
+        "volumes": "1-2",
+        "physical_description": "CLXV, 618 s., il., portr. ; 702 s., [1] k. tabl. złożone luzem, il., pl.",
+        "series": "(Biblioteka Narodowa. Seria 1 ; nr 262)",
+        "qualification_rule": "Tytuł dokładnie „Lalka”",
+        "review_status": "approved",
+        "review_flags": "publikacja wielotomowa lub oznaczenie tomów",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Zakład Narodowy im. Ossolińskich"
+        ],
+        "publisher_city": [
+          "Wrocław, Kraków"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:3722",
+      "type": "Publisher",
+      "label": "Zakład Narodowy im. Ossolińskich",
+      "properties": {
+        "pbl_id": 3722,
+        "city": "Wrocław, Kraków",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:590636",
+      "type": "Edition",
+      "label": "Lalka (2000, Kurpisz)",
+      "properties": {
+        "pbl_id": 590636,
+        "title": "Lalka. Powieść",
+        "publication_year": 2000,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "volumes": "1-2",
+        "physical_description": "398 s., il.; 390 s., il.",
+        "series": "(Klasyka Polska)",
+        "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+        "review_status": "approved",
+        "review_flags": "publikacja wielotomowa lub oznaczenie tomów",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Kurpisz"
+        ],
+        "publisher_city": [
+          "Poznań"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:4617",
+      "type": "Publisher",
+      "label": "Kurpisz",
+      "properties": {
+        "pbl_id": 4617,
+        "city": "Poznań",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:730196",
+      "type": "Edition",
+      "label": "Lalka (2000, Mea)",
+      "properties": {
+        "pbl_id": 730196,
+        "title": "Lalka. Powieść w dwóch tomach",
+        "publication_year": 2000,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "volumes": "1-2",
+        "physical_description": "414 s.; 412 s.",
+        "series": "(Perły Literatury)",
+        "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+        "review_status": "approved",
+        "review_flags": "publikacja wielotomowa lub oznaczenie tomów",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Mea"
+        ],
+        "publisher_city": [
+          "Warszawa"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:33938",
+      "type": "Publisher",
+      "label": "Mea",
+      "properties": {
+        "pbl_id": 33938,
+        "city": "Warszawa",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:724015",
+      "type": "Edition",
+      "label": "Lalka (2001, KWE)",
+      "properties": {
+        "pbl_id": 724015,
+        "title": "Lalka",
+        "publication_year": 2001,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "physical_description": "671 s.",
+        "qualification_rule": "Tytuł dokładnie „Lalka”",
+        "review_status": "approved",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "KWE"
+        ],
+        "publisher_city": [
+          "Warszawa"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:26195",
+      "type": "Publisher",
+      "label": "KWE",
+      "properties": {
+        "pbl_id": 26195,
+        "city": "Warszawa",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:904266",
+      "type": "Edition",
+      "label": "Lalka (2002, Świat Książki)",
+      "properties": {
+        "pbl_id": 904266,
+        "title": "Lalka",
+        "publication_year": 2002,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "volumes": "1-3",
+        "physical_description": "349 s.; 378 s.; 314 s. [Edycja na podst. Pisma T. 11-13 Warszawa 1935]",
+        "qualification_rule": "Tytuł dokładnie „Lalka”",
+        "review_status": "approved",
+        "review_flags": "publikacja wielotomowa lub oznaczenie tomów",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Świat Książki"
+        ],
+        "publisher_city": [
+          "Warszawa"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "record:1189677",
+      "type": "Edition",
+      "label": "Lalka (2002, EKSMO-Press)",
+      "properties": {
+        "pbl_id": 1189677,
+        "title": "[Lalka] Kukla. Roman",
+        "publication_year": 2002,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "physical_description": "734 s.: portr. [Instytut Bibliograficzny. Biblioteka Narodowa]",
+        "qualification_rule": "Tytuł ma katalogową formę „[Lalka] …”",
+        "review_status": "approved",
+        "review_flags": "prawdopodobny przekład",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "EKSMO-Press"
+        ],
+        "publisher_city": [
+          "Moskva"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:35903",
+      "type": "Publisher",
+      "label": "EKSMO-Press",
+      "properties": {
+        "pbl_id": 35903,
+        "city": "Moskva",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:828848",
+      "type": "Edition",
+      "label": "Lalka (2003, Zielona Sowa)",
+      "properties": {
+        "pbl_id": 828848,
+        "title": "Lalka",
+        "publication_year": 2003,
+        "publication_year_source": "inferred_from_physical_description",
+        "physical_description": "[2003], 649 s.",
+        "series": "(Lektura z Opracowaniem)",
+        "qualification_rule": "Tytuł dokładnie „Lalka”",
+        "review_status": "approved",
+        "review_flags": "rok tylko w opisie fizycznym",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Zielona Sowa"
+        ],
+        "publisher_city": [
+          "Kraków"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "record:1049186",
+      "type": "Edition",
+      "label": "Lalka (2003, EKSMO)",
+      "properties": {
+        "pbl_id": 1049186,
+        "title": "[Lalka] Kukla. Roman",
+        "publication_year": 2003,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "physical_description": "734 s.: portr.",
+        "qualification_rule": "Tytuł ma katalogową formę „[Lalka] …”",
+        "review_status": "approved",
+        "review_flags": "prawdopodobny przekład",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "EKSMO"
+        ],
+        "publisher_city": [
+          "Moskva"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:25550",
+      "type": "Publisher",
+      "label": "EKSMO",
+      "properties": {
+        "pbl_id": 25550,
+        "city": "Moskva",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:1294537",
+      "type": "Edition",
+      "label": "Lalka (2004, Zielona Sowa)",
+      "properties": {
+        "pbl_id": 1294537,
+        "title": "Lalka. [Powieść]",
+        "publication_year": 2004,
+        "publication_year_source": "inferred_from_physical_description",
+        "original_language": "pol",
+        "physical_description": "[2004], 596, [3] s.",
+        "series": "(Złota Seria)",
+        "bn_number": "2278181",
+        "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+        "review_status": "approved",
+        "review_flags": "rok tylko w opisie fizycznym",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Zielona Sowa"
+        ],
+        "publisher_city": [
+          "Kraków"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "record:1297832",
+      "type": "Edition",
+      "label": "Lalka (2004, Zielona Sowa)",
+      "properties": {
+        "pbl_id": 1297832,
+        "title": "Lalka. [Powieść]",
+        "publication_year": 2004,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "original_language": "pol",
+        "physical_description": "585, [4] s.",
+        "series": "(Arcydzieła Literatury Polskiej)",
+        "bn_number": "2355310",
+        "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+        "review_status": "approved",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Zielona Sowa"
+        ],
+        "publisher_city": [
+          "Kraków"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "record:1465021",
+      "type": "Edition",
+      "label": "Lalka (2004, Eksmo)",
+      "properties": {
+        "pbl_id": 1465021,
+        "title": "Kukla. Roman. [Powieść]",
+        "original_title": "Lalka",
+        "publication_year": 2004,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "physical_description": "736, [2] s.: portr.",
+        "qualification_rule": "Pole tytułu oryginału ma wartość „Lalka”",
+        "review_status": "approved",
+        "review_flags": "prawdopodobny przekład",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Eksmo"
+        ],
+        "publisher_city": [
+          "Moskva"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:125157",
+      "type": "Publisher",
+      "label": "Eksmo",
+      "properties": {
+        "pbl_id": 125157,
+        "city": "Moskva",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:1348632",
+      "type": "Edition",
+      "label": "Lalka (2005, Zielona Sowa)",
+      "properties": {
+        "pbl_id": 1348632,
+        "title": "Lalka. [Powieść]",
+        "publication_year": 2005,
+        "publication_year_source": "inferred_from_physical_description",
+        "physical_description": "[2005], 585, [7] s.",
+        "series": "(Arcydzieła Literatury Polskiej)",
+        "bn_number": "26614",
+        "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+        "review_status": "approved",
+        "review_flags": "rok tylko w opisie fizycznym",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Zielona Sowa"
+        ],
+        "publisher_city": [
+          "Kraków"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "record:1348646",
+      "type": "Edition",
+      "label": "Lalka (2005, Wydawnictwo \"Zielona Sowa\")",
+      "properties": {
+        "pbl_id": 1348646,
+        "title": "Lalka. [Powieść]",
+        "publication_year": 2005,
+        "publication_year_source": "inferred_from_physical_description",
+        "physical_description": "[2005], 585, [4] s.",
+        "bn_number": "26628",
+        "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+        "review_status": "approved",
+        "review_flags": "rok tylko w opisie fizycznym",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Wydawnictwo \"Zielona Sowa\""
+        ],
+        "publisher_city": [
+          "Kraków"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:67034",
+      "type": "Publisher",
+      "label": "Wydawnictwo \"Zielona Sowa\"",
+      "properties": {
+        "pbl_id": 67034,
+        "city": "Kraków",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:1352992",
+      "type": "Edition",
+      "label": "Lalka (2005, Shang hai yi wen chu ban she)",
+      "properties": {
+        "pbl_id": 1352992,
+        "title": "Wan'ou. [Powieść]",
+        "original_title": "Lalka",
+        "publication_year": 2005,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "original_language": "chi",
+        "physical_description": "[2], 874 s.",
+        "bn_number": "31050",
+        "qualification_rule": "Pole tytułu oryginału ma wartość „Lalka”",
+        "review_status": "approved",
+        "review_flags": "prawdopodobny przekład",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Shang hai yi wen chu ban she"
+        ],
+        "publisher_city": [
+          "Shang hai"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:47148",
+      "type": "Publisher",
+      "label": "Shang hai yi wen chu ban she",
+      "properties": {
+        "pbl_id": 47148,
+        "city": "Shang hai",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:1353011",
+      "type": "Edition",
+      "label": "Lalka (2005, Mediasat Group)",
+      "properties": {
+        "pbl_id": 1353011,
+        "title": "Lalka. [Powieść]",
+        "publication_year": 2005,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "physical_description": "955, [1] s.",
+        "series": "(Biblioteka Gazety Wyborczej. XIX Wiek, 22)",
+        "bn_number": "31070",
+        "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+        "review_status": "approved",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Mediasat Group"
+        ],
+        "publisher_city": [
+          "[Madryt]"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:128622",
+      "type": "Publisher",
+      "label": "Mediasat Group",
+      "properties": {
+        "pbl_id": 128622,
+        "city": "[Madryt]",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:1358257",
+      "type": "Edition",
+      "label": "Lalka (2006, Wydawnictwo Greg)",
+      "properties": {
+        "pbl_id": 1358257,
+        "title": "Lalka. [Powieść]",
+        "publication_year": 2006,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "physical_description": "668 s., il. Na stronie tytułowej: Notatki na marginesie, szczegółowe opracowanie, streszczenie.",
+        "series": "(Lektura z Opracowaniem)",
+        "bn_number": "33169",
+        "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+        "review_status": "approved",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Wydawnictwo Greg"
+        ],
+        "publisher_city": [
+          "Kraków"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:28328",
+      "type": "Publisher",
+      "label": "Wydawnictwo Greg",
+      "properties": {
+        "pbl_id": 28328,
+        "city": "Kraków",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:1348677",
+      "type": "Edition",
+      "label": "Lalka (2007, Świat Książki - Bertelsmann Media)",
+      "properties": {
+        "pbl_id": 1348677,
+        "title": "Lalka. [Powieść]",
+        "publication_year": 2007,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "physical_description": "378, [3] s. Tekst wg ed.: Pisma. T. 11-13, Warszawa 1935.",
+        "bn_number": "26659",
+        "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+        "review_status": "approved",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Świat Książki - Bertelsmann Media"
+        ],
+        "publisher_city": [
+          "Warszawa"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:25733",
+      "type": "Publisher",
+      "label": "Świat Książki - Bertelsmann Media",
+      "properties": {
+        "pbl_id": 25733,
+        "city": "Warszawa",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:1348678",
+      "type": "Edition",
+      "label": "Lalka (2007, Świat Książki - Bertelsmann Media)",
+      "properties": {
+        "pbl_id": 1348678,
+        "title": "Lalka. [Powieść]",
+        "publication_year": 2007,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "physical_description": "349 s. Tekst wg: Pisma. T. 11-13, Warszawa 1935.",
+        "bn_number": "26660",
+        "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+        "review_status": "approved",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Świat Książki - Bertelsmann Media"
+        ],
+        "publisher_city": [
+          "Warszawa"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "record:1348680",
+      "type": "Edition",
+      "label": "Lalka (2007, Świat Książki - Bertelsmann Media)",
+      "properties": {
+        "pbl_id": 1348680,
+        "title": "Lalka. [Powieść]",
+        "publication_year": 2007,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "physical_description": "314, [1] s. Tekst wg: Pisma. T. 11-13, Warszawa 1935.",
+        "bn_number": "26662",
+        "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+        "review_status": "approved",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Świat Książki - Bertelsmann Media"
+        ],
+        "publisher_city": [
+          "Warszawa"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "record:1351061",
+      "type": "Edition",
+      "label": "Lalka (2007, Wydawnictwo Greg)",
+      "properties": {
+        "pbl_id": 1351061,
+        "title": "Lalka. [Powieść]",
+        "publication_year": 2007,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "physical_description": "[2], 668 s., il. Na stronie tytułowej: Notatki na marginesie, cytaty, które warto znać, streszczenie.",
+        "series": "(Lektura: wydanie z opracowaniem)",
+        "bn_number": "29066",
+        "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+        "review_status": "approved",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Wydawnictwo Greg"
+        ],
+        "publisher_city": [
+          "Kraków"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "record:1353006",
+      "type": "Edition",
+      "label": "Lalka (2007, KRK Ediciones)",
+      "properties": {
+        "pbl_id": 1353006,
+        "title": "La muneca. [Powieść]",
+        "original_title": "Lalka",
+        "publication_year": 2007,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "original_language": "spa",
+        "physical_description": "1390, [1] s., il.",
+        "series": "(Tras 3 Letras, 9)",
+        "bn_number": "31064",
+        "qualification_rule": "Pole tytułu oryginału ma wartość „Lalka”",
+        "review_status": "approved",
+        "review_flags": "prawdopodobny przekład",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "KRK Ediciones"
+        ],
+        "publisher_city": [
+          "Oviedo"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:128676",
+      "type": "Publisher",
+      "label": "KRK Ediciones",
+      "properties": {
+        "pbl_id": 128676,
+        "city": "Oviedo",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:1351060",
+      "type": "Edition",
+      "label": "Lalka (2008, Wydawnictwo Greg)",
+      "properties": {
+        "pbl_id": 1351060,
+        "title": "Lalka. [Powieść]",
+        "publication_year": 2008,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "physical_description": "[2], 668 s., il. Na stronie tytułowej: Notatki na marginesie, cytaty, które warto znać, streszczenie.",
+        "series": "(Lektury Grega)",
+        "bn_number": "29065",
+        "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+        "review_status": "approved",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Wydawnictwo Greg"
+        ],
+        "publisher_city": [
+          "Kraków"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "record:1420509",
+      "type": "Edition",
+      "label": "Lalka (2009, Wydawnictwo \"Zielona Sowa\")",
+      "properties": {
+        "pbl_id": 1420509,
+        "title": "Lalka. [Powieść]",
+        "publication_year": 2009,
+        "publication_year_source": "inferred_from_physical_description",
+        "physical_description": "[2009], 650, [6] s.",
+        "series": "(Lektura z Opracowaniem i Audiobookiem)",
+        "bn_number": "7507",
+        "bn_url": "https://katalogi.bn.org.pl/discovery/fulldisplay?docid=alma991051825799705066&context=L&vid=48OMNIS_NLOP:48OMNIS_NLOP&lang=pl",
+        "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+        "review_status": "approved",
+        "review_flags": "rok tylko w opisie fizycznym",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Wydawnictwo \"Zielona Sowa\""
+        ],
+        "publisher_city": [
+          "Kraków"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "record:1422691",
+      "type": "Edition",
+      "label": "Lalka (2009, Wydawnictwo \"Zielona Sowa\")",
+      "properties": {
+        "pbl_id": 1422691,
+        "title": "Lalka. [Powieść]",
+        "publication_year": 2009,
+        "publication_year_source": "inferred_from_physical_description",
+        "physical_description": "[2009], 585, [4] s.",
+        "series": "(Złota Seria)",
+        "bn_number": "4080",
+        "bn_url": "https://katalogi.bn.org.pl/discovery/fulldisplay?docid=alma991049063699705066&context=L&vid=48OMNIS_NLOP:48OMNIS_NLOP&lang=pl",
+        "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+        "review_status": "approved",
+        "review_flags": "rok tylko w opisie fizycznym",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Wydawnictwo \"Zielona Sowa\""
+        ],
+        "publisher_city": [
+          "Kraków"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "record:1422692",
+      "type": "Edition",
+      "label": "Lalka (2009, Wydawnictwo \"Zielona Sowa\")",
+      "properties": {
+        "pbl_id": 1422692,
+        "title": "Lalka. [Powieść]",
+        "publication_year": 2009,
+        "publication_year_source": "inferred_from_physical_description",
+        "physical_description": "[2009], 649, [7] s., U dołu okł.: Pozytywizm.",
+        "series": "(Lektura z Opracowaniem)",
+        "bn_number": "4081",
+        "bn_url": "https://katalogi.bn.org.pl/discovery/fulldisplay?docid=alma991049063919705066&context=L&vid=48OMNIS_NLOP:48OMNIS_NLOP&lang=pl",
+        "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+        "review_status": "approved",
+        "review_flags": "rok tylko w opisie fizycznym",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Wydawnictwo \"Zielona Sowa\""
+        ],
+        "publisher_city": [
+          "Kraków"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "record:1432509",
+      "type": "Edition",
+      "label": "Lalka (2010, Wydawnictwo Greg)",
+      "properties": {
+        "pbl_id": 1432509,
+        "title": "Lalka. [Powieść]",
+        "publication_year": 2010,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "edition_statement": "Wydanie 2. rozszerzone i uzupełnione.",
+        "physical_description": "[2], 676 s., il.",
+        "series": "(Lektury Grega)",
+        "bn_number": "201005168",
+        "bn_url": "https://katalogi.bn.org.pl/discovery/fulldisplay?docid=alma9910251436505606&context=L&vid=48OMNIS_NLOP:48OMNIS_NLOP&lang=pl",
+        "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+        "review_status": "approved",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Wydawnictwo Greg"
+        ],
+        "publisher_city": [
+          "Kraków"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "record:1433507",
+      "type": "Edition",
+      "label": "Lalka (2010, Wydawnictwo \"Zielona Sowa\")",
+      "properties": {
+        "pbl_id": 1433507,
+        "title": "Lalka. [Powieść]",
+        "publication_year": 2010,
+        "publication_year_source": "inferred_from_physical_description",
+        "physical_description": "[2010], 923, [1] s.",
+        "series": "(Arcydzieła Literatury Polskiej)",
+        "bn_number": "201006655",
+        "bn_url": "https://katalogi.bn.org.pl/discovery/fulldisplay?docid=alma9910322092405606&context=L&vid=48OMNIS_NLOP:48OMNIS_NLOP&lang=pl",
+        "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+        "review_status": "approved",
+        "review_flags": "rok tylko w opisie fizycznym",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Wydawnictwo \"Zielona Sowa\""
+        ],
+        "publisher_city": [
+          "Kraków"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "record:1434532",
+      "type": "Edition",
+      "label": "Lalka (2010, Slovo / Slovo)",
+      "properties": {
+        "pbl_id": 1434532,
+        "title": "Kukla. [Powieść]",
+        "original_title": "Lalka",
+        "publication_year": 2010,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "original_language": "rus",
+        "physical_description": "812, [1] s.",
+        "series": "(Biblioteka zarubežnoj klassiki (Slovo); LXXVIII)",
+        "bn_number": "201008188",
+        "bn_url": "https://katalogi.bn.org.pl/discovery/fulldisplay?docid=alma9910397065605606&context=L&vid=48OMNIS_NLOP:48OMNIS_NLOP&lang=pl",
+        "qualification_rule": "Pole tytułu oryginału ma wartość „Lalka”",
+        "review_status": "approved",
+        "review_flags": "prawdopodobny przekład",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Slovo / Slovo"
+        ],
+        "publisher_city": [
+          "Moskva"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:144141",
+      "type": "Publisher",
+      "label": "Slovo / Slovo",
+      "properties": {
+        "pbl_id": 144141,
+        "city": "Moskva",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:1434852",
+      "type": "Edition",
+      "label": "Lalka (2010, AST / Astrel')",
+      "properties": {
+        "pbl_id": 1434852,
+        "title": "Kukla. [Powieść]",
+        "original_title": "Lalka",
+        "publication_year": 2010,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "original_language": "rus",
+        "physical_description": "956, [2] s.",
+        "bn_number": "201008675",
+        "bn_url": "https://katalogi.bn.org.pl/discovery/fulldisplay?docid=alma9910421115905606&context=L&vid=48OMNIS_NLOP:48OMNIS_NLOP&lang=pl",
+        "qualification_rule": "Pole tytułu oryginału ma wartość „Lalka”",
+        "review_status": "approved",
+        "review_flags": "więcej niż jeden wydawca; prawdopodobny przekład",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "AST",
+          "Astrel'"
+        ],
+        "publisher_city": [
+          "Moskva",
+          "Moskva"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
+    },
+    {
+      "id": "publisher:28828",
+      "type": "Publisher",
+      "label": "AST",
+      "properties": {
+        "pbl_id": 28828,
+        "city": "Moskva",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "publisher:128695",
+      "type": "Publisher",
+      "label": "Astrel'",
+      "properties": {
+        "pbl_id": 128695,
+        "city": "Moskva",
+        "role": "edition_publisher"
+      },
+      "presentation_type": "Publisher",
+      "original_type": null
+    },
+    {
+      "id": "record:1457647",
+      "type": "Edition",
+      "label": "Lalka (2012, Wydawnictwo Greg)",
+      "properties": {
+        "pbl_id": 1457647,
+        "title": "Lalka. [Powieść]",
+        "publication_year": 2012,
+        "publication_year_source": "ZA_ROK_WYDANIA",
+        "edition_statement": "Wyd. 2. popr. i uzup.",
+        "physical_description": "676 s. Na stronie tyt.: Notatki na marginesie, cytaty, które warto znać, streszczenie.",
+        "bn_number": "201204982",
+        "bn_url": "https://katalogi.bn.org.pl/discovery/fulldisplay?docid=alma9910276389405606&context=L&vid=48OMNIS_NLOP:48OMNIS_NLOP&lang=pl",
+        "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+        "review_status": "approved",
+        "pbl_type": "KS",
+        "role": "verified_edition",
+        "publisher_names": [
+          "Wydawnictwo Greg"
+        ],
+        "publisher_city": [
+          "Kraków"
+        ]
+      },
+      "presentation_type": "Edition",
+      "original_type": null
     },
     {
       "id": "record:1704531",
@@ -4776,6 +6746,739 @@
       "target": "record:136679",
       "relationship": "ADAPTED_AS",
       "relation_source": "manual"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:2736",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:2736",
+      "target": "publisher:669",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:2736",
+      "target": "publisher:671",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:90139",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:90139",
+      "target": "publisher:59",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:90141",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:90141",
+      "target": "publisher:1212",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:120811",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:120811",
+      "target": "publisher:2642",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:120843",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:120843",
+      "target": "publisher:81",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:120847",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:120847",
+      "target": "publisher:87",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:212058",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:212058",
+      "target": "publisher:13523",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:212058",
+      "target": "publisher:13543",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:212099",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:212099",
+      "target": "publisher:13583",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:212918",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:212918",
+      "target": "publisher:12803",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:261430",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:261430",
+      "target": "publisher:1400",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:261437",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:261437",
+      "target": "publisher:14218",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:261439",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:261439",
+      "target": "publisher:4240",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:266220",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:266220",
+      "target": "publisher:4710",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:287140",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:287140",
+      "target": "publisher:25282",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:316670",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:316670",
+      "target": "publisher:84",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:316722",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:316722",
+      "target": "publisher:162",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:361291",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:361291",
+      "target": "publisher:21800",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:361538",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:361538",
+      "target": "publisher:27641",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:365368",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:365368",
+      "target": "publisher:28169",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:365374",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:365374",
+      "target": "publisher:4807",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:372477",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:372477",
+      "target": "publisher:8564",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:372597",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:372597",
+      "target": "publisher:2303",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:388451",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:388451",
+      "target": "publisher:20551",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:388987",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:388987",
+      "target": "publisher:4786",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:389200",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:389200",
+      "target": "publisher:26180",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:389554",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:389554",
+      "target": "publisher:3722",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:590636",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:590636",
+      "target": "publisher:4617",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:730196",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:730196",
+      "target": "publisher:33938",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:724015",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:724015",
+      "target": "publisher:26195",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:904266",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:904266",
+      "target": "publisher:20551",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:1189677",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:1189677",
+      "target": "publisher:35903",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:828848",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:828848",
+      "target": "publisher:26180",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:1049186",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:1049186",
+      "target": "publisher:25550",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:1294537",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:1294537",
+      "target": "publisher:26180",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:1297832",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:1297832",
+      "target": "publisher:26180",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:1465021",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:1465021",
+      "target": "publisher:125157",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:1348632",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:1348632",
+      "target": "publisher:26180",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:1348646",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:1348646",
+      "target": "publisher:67034",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:1352992",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:1352992",
+      "target": "publisher:47148",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:1353011",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:1353011",
+      "target": "publisher:128622",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:1358257",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:1358257",
+      "target": "publisher:28328",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:1348677",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:1348677",
+      "target": "publisher:25733",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:1348678",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:1348678",
+      "target": "publisher:25733",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:1348680",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:1348680",
+      "target": "publisher:25733",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:1351061",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:1351061",
+      "target": "publisher:28328",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:1353006",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:1353006",
+      "target": "publisher:128676",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:1351060",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:1351060",
+      "target": "publisher:28328",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:1420509",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:1420509",
+      "target": "publisher:67034",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:1422691",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:1422691",
+      "target": "publisher:67034",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:1422692",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:1422692",
+      "target": "publisher:67034",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:1432509",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:1432509",
+      "target": "publisher:28328",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:1433507",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:1433507",
+      "target": "publisher:67034",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:1434532",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:1434532",
+      "target": "publisher:144141",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:1434852",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:1434852",
+      "target": "publisher:28828",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:1434852",
+      "target": "publisher:128695",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
+    },
+    {
+      "source": "record:109715",
+      "target": "record:1457647",
+      "relationship": "HAS_EDITION",
+      "relation_source": "curated_pbl_snapshot",
+      "review_status": "approved"
+    },
+    {
+      "source": "record:1457647",
+      "target": "publisher:28328",
+      "relationship": "PUBLISHED_BY",
+      "relation_source": "pbl_snapshot"
     },
     {
       "source": "record:304249",

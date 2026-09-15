@@ -1,0 +1,1459 @@
+{
+  "metadata": {
+    "title": "Zweryfikowane wydania Lalki",
+    "source": "PBL Oracle snapshot exported by PBL-oracle-export",
+    "snapshot": "pbl_snapshot_2026-09-14_13-32-53",
+    "prepared_on": "2026-09-15",
+    "review_status": "all_records_approved",
+    "record_count": 55,
+    "selection_note": "Records linked to Bolesław Prus (PBL creator 3426), selected by title rules and individually approved by the project editor.",
+    "language_note": "original_language reproduces ZA_JEZYK_ORYGINALU and must not be interpreted as the language of this edition."
+  },
+  "editions": [
+    {
+      "pbl_id": 2736,
+      "title": "[Lalka] A babu. Regeny",
+      "original_title": null,
+      "publication_year": 1988,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "479 s.",
+      "series": null,
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 669,
+          "name": "Kriterion",
+          "city": "Bucuresti"
+        },
+        {
+          "pbl_id": 671,
+          "name": "[Europa]",
+          "city": "[Budapest]"
+        }
+      ],
+      "qualification_rule": "Tytuł ma katalogową formę „[Lalka] …”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "więcej niż jeden wydawca; prawdopodobny przekład"
+    },
+    {
+      "pbl_id": 90139,
+      "title": "[Lalka] Kukla",
+      "original_title": null,
+      "publication_year": 1990,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": "1-2",
+      "physical_description": "463 s.; 446 s.",
+      "series": null,
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 59,
+          "name": "Krajowa Agencja Wydawnicza",
+          "city": "Warszawa"
+        }
+      ],
+      "qualification_rule": "Tytuł ma katalogową formę „[Lalka] …”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "prawdopodobny przekład; publikacja wielotomowa lub oznaczenie tomów"
+    },
+    {
+      "pbl_id": 90141,
+      "title": "Lalka",
+      "original_title": null,
+      "publication_year": 1990,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": "1-2",
+      "physical_description": "452 s.; 439 s.",
+      "series": null,
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 1212,
+          "name": "Dom Książki",
+          "city": "Kraków"
+        }
+      ],
+      "qualification_rule": "Tytuł dokładnie „Lalka”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "publikacja wielotomowa lub oznaczenie tomów"
+    },
+    {
+      "pbl_id": 120811,
+      "title": "Lalka",
+      "original_title": null,
+      "publication_year": 1991,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": "1-2",
+      "physical_description": "435; 415 s.",
+      "series": null,
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 2642,
+          "name": "Labos",
+          "city": "Warszawa"
+        }
+      ],
+      "qualification_rule": "Tytuł dokładnie „Lalka”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "publikacja wielotomowa lub oznaczenie tomów"
+    },
+    {
+      "pbl_id": 120843,
+      "title": "Lalka",
+      "original_title": null,
+      "publication_year": 1991,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": "1-3",
+      "physical_description": "356; 380; 337 s.",
+      "series": null,
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 81,
+          "name": "Książka i Wiedza",
+          "city": "Warszawa"
+        }
+      ],
+      "qualification_rule": "Tytuł dokładnie „Lalka”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "publikacja wielotomowa lub oznaczenie tomów"
+    },
+    {
+      "pbl_id": 120847,
+      "title": "Lalka",
+      "original_title": null,
+      "publication_year": 1991,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": "1-2",
+      "physical_description": "CXIX, 533 s., il. portr.; 606 s., mapa",
+      "series": "(Biblioteka Narodowa. Seria 1, nr 262)",
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 87,
+          "name": "Zakład Narodowy im. Ossolińskich",
+          "city": "Wrocław"
+        }
+      ],
+      "qualification_rule": "Tytuł dokładnie „Lalka”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "publikacja wielotomowa lub oznaczenie tomów"
+    },
+    {
+      "pbl_id": 212058,
+      "title": "[Lalka] The doll",
+      "original_title": null,
+      "publication_year": 1993,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "[10], 702 s.",
+      "series": null,
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 13523,
+          "name": "Hippocrene",
+          "city": "New York"
+        },
+        {
+          "pbl_id": 13543,
+          "name": "Dedalus",
+          "city": "Huntingdon"
+        }
+      ],
+      "qualification_rule": "Tytuł ma katalogową formę „[Lalka] …”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "więcej niż jeden wydawca; prawdopodobny przekład"
+    },
+    {
+      "pbl_id": 212099,
+      "title": "[Lalka] Papusa",
+      "original_title": null,
+      "publication_year": 1993,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": "1-2",
+      "physical_description": "[Instytut Bibliograficzny. Biblioteka Narodowa]",
+      "series": null,
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 13583,
+          "name": "Constelatia",
+          "city": "Bucuresti"
+        }
+      ],
+      "qualification_rule": "Tytuł ma katalogową formę „[Lalka] …”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "prawdopodobny przekład; publikacja wielotomowa lub oznaczenie tomów"
+    },
+    {
+      "pbl_id": 212918,
+      "title": "[Lalka] Kukla. Roman",
+      "original_title": null,
+      "publication_year": 1993,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "669 s. [Instytut Bibliograficzny. Biblioteka Narodowa]",
+      "series": null,
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 12803,
+          "name": "Veche",
+          "city": "Moskva"
+        }
+      ],
+      "qualification_rule": "Tytuł ma katalogową formę „[Lalka] …”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "prawdopodobny przekład"
+    },
+    {
+      "pbl_id": 261430,
+      "title": "Lalka",
+      "original_title": null,
+      "publication_year": 1994,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": "1-2",
+      "physical_description": "317 s., [4] s. tabl.; 308 s., [4] s. tabl.",
+      "series": null,
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 1400,
+          "name": "Beskidzka Oficyna Wydawnicza",
+          "city": "Bielsko-Biała"
+        }
+      ],
+      "qualification_rule": "Tytuł dokładnie „Lalka”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "publikacja wielotomowa lub oznaczenie tomów"
+    },
+    {
+      "pbl_id": 261437,
+      "title": "Lalka",
+      "original_title": null,
+      "publication_year": 1994,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "(3 t. w 1 wol.) 602 s., [24] s.",
+      "series": null,
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 14218,
+          "name": "Elipsa 2",
+          "city": "Warszawa"
+        }
+      ],
+      "qualification_rule": "Tytuł dokładnie „Lalka”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": null
+    },
+    {
+      "pbl_id": 261439,
+      "title": "Lalka",
+      "original_title": null,
+      "publication_year": 1994,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "(2 t. w 1 wol.) 615 s., il.",
+      "series": null,
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 4240,
+          "name": "Marba Crown",
+          "city": "Warszawa"
+        }
+      ],
+      "qualification_rule": "Tytuł dokładnie „Lalka”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": null
+    },
+    {
+      "pbl_id": 266220,
+      "title": "[Lalka]  Kukla. Roman v dvuch chastjach",
+      "original_title": null,
+      "publication_year": 1994,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": "1-2",
+      "physical_description": "460 s.; 443 s.",
+      "series": null,
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 4710,
+          "name": "Polymja",
+          "city": "Mihnsk"
+        }
+      ],
+      "qualification_rule": "Tytuł ma katalogową formę „[Lalka] …”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "prawdopodobny przekład; publikacja wielotomowa lub oznaczenie tomów"
+    },
+    {
+      "pbl_id": 287140,
+      "title": "[Lalka] Lele. Romanas",
+      "original_title": null,
+      "publication_year": 1994,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": "2",
+      "volumes": "1-2",
+      "physical_description": "487 s.; 446 s.",
+      "series": null,
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 25282,
+          "name": "Rosma",
+          "city": "Vilnius"
+        }
+      ],
+      "qualification_rule": "Tytuł ma katalogową formę „[Lalka] …”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "prawdopodobny przekład; publikacja wielotomowa lub oznaczenie tomów"
+    },
+    {
+      "pbl_id": 316670,
+      "title": "Lalka",
+      "original_title": null,
+      "publication_year": 1995,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "812 s.",
+      "series": null,
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 84,
+          "name": "Państwowy Instytut Wydawniczy",
+          "city": "Warszawa"
+        }
+      ],
+      "qualification_rule": "Tytuł dokładnie „Lalka”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": null
+    },
+    {
+      "pbl_id": 316722,
+      "title": "Lalka. Powieść",
+      "original_title": null,
+      "publication_year": 1995,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": "1 w tej edycji",
+      "volumes": "1-2",
+      "physical_description": "634 s.; 624 s.",
+      "series": "(Biblioteka Klasyki)",
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 162,
+          "name": "Wydawnictwo Dolnośląskie",
+          "city": "Wrocław"
+        }
+      ],
+      "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "publikacja wielotomowa lub oznaczenie tomów"
+    },
+    {
+      "pbl_id": 361291,
+      "title": "Lalka. Powieść",
+      "original_title": null,
+      "publication_year": 1996,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "723 s.",
+      "series": null,
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 21800,
+          "name": "Eventus",
+          "city": "Kraków"
+        }
+      ],
+      "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": null
+    },
+    {
+      "pbl_id": 361538,
+      "title": "Lalka",
+      "original_title": null,
+      "publication_year": 1996,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "749 s.",
+      "series": "(Biblioteka Klasyki Polskiej / Podsiedlik-Raniowski i Spółka)",
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 27641,
+          "name": "Podsiedlik-Raniowski i Spółka",
+          "city": "Warszawa"
+        }
+      ],
+      "qualification_rule": "Tytuł dokładnie „Lalka”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": null
+    },
+    {
+      "pbl_id": 365368,
+      "title": "[Lalka] The doll",
+      "original_title": null,
+      "publication_year": 1996,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "XV, 683 s.",
+      "series": null,
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 28169,
+          "name": "Central European Univ. Press",
+          "city": "Budapest, London"
+        }
+      ],
+      "qualification_rule": "Tytuł ma katalogową formę „[Lalka] …”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "prawdopodobny przekład"
+    },
+    {
+      "pbl_id": 365374,
+      "title": "[Lalka] Kukla",
+      "original_title": null,
+      "publication_year": 1996,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "668 s.",
+      "series": null,
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 4807,
+          "name": "Chudozhestvennaja Literatura",
+          "city": "Moskva"
+        }
+      ],
+      "qualification_rule": "Tytuł ma katalogową formę „[Lalka] …”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "prawdopodobny przekład"
+    },
+    {
+      "pbl_id": 372477,
+      "title": "Lalka",
+      "original_title": null,
+      "publication_year": 1997,
+      "publication_year_source": "inferred_from_physical_description",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": "1-2",
+      "physical_description": "[1997], 520 s. ; 476 s.",
+      "series": "(Lektury Szkolne z Opracowaniem)",
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 8564,
+          "name": "Wydawnictwo \"Kama\"",
+          "city": "Warszawa"
+        }
+      ],
+      "qualification_rule": "Tytuł dokładnie „Lalka”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "rok tylko w opisie fizycznym; publikacja wielotomowa lub oznaczenie tomów"
+    },
+    {
+      "pbl_id": 372597,
+      "title": "Lalka",
+      "original_title": null,
+      "publication_year": 1997,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "679 s.",
+      "series": "(Narodowa Biblioteka Lektur Szkolnych)",
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 2303,
+          "name": "Siedmioróg",
+          "city": "Wrocław"
+        }
+      ],
+      "qualification_rule": "Tytuł dokładnie „Lalka”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": null
+    },
+    {
+      "pbl_id": 388451,
+      "title": "Lalka",
+      "original_title": null,
+      "publication_year": 1998,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": "1-3",
+      "physical_description": "349 s. ; 378 s. ; 314 s.",
+      "series": null,
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 20551,
+          "name": "Świat Książki",
+          "city": "Warszawa"
+        }
+      ],
+      "qualification_rule": "Tytuł dokładnie „Lalka”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "publikacja wielotomowa lub oznaczenie tomów"
+    },
+    {
+      "pbl_id": 388987,
+      "title": "Lalka",
+      "original_title": null,
+      "publication_year": 1998,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": "1-2",
+      "physical_description": "474 s., ; 467 s.",
+      "series": "(Klasyka Polska)",
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 4786,
+          "name": "Prószyński i S-ka",
+          "city": "Warszawa"
+        }
+      ],
+      "qualification_rule": "Tytuł dokładnie „Lalka”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "publikacja wielotomowa lub oznaczenie tomów"
+    },
+    {
+      "pbl_id": 389200,
+      "title": "Lalka",
+      "original_title": null,
+      "publication_year": 1998,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "596 s.",
+      "series": null,
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 26180,
+          "name": "Zielona Sowa",
+          "city": "Kraków"
+        }
+      ],
+      "qualification_rule": "Tytuł dokładnie „Lalka”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": null
+    },
+    {
+      "pbl_id": 389554,
+      "title": "Lalka",
+      "original_title": null,
+      "publication_year": 1998,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": "2 przejrzane",
+      "volumes": "1-2",
+      "physical_description": "CLXV, 618 s., il., portr. ; 702 s., [1] k. tabl. złożone luzem, il., pl.",
+      "series": "(Biblioteka Narodowa. Seria 1 ; nr 262)",
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 3722,
+          "name": "Zakład Narodowy im. Ossolińskich",
+          "city": "Wrocław, Kraków"
+        }
+      ],
+      "qualification_rule": "Tytuł dokładnie „Lalka”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "publikacja wielotomowa lub oznaczenie tomów"
+    },
+    {
+      "pbl_id": 590636,
+      "title": "Lalka. Powieść",
+      "original_title": null,
+      "publication_year": 2000,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": "1-2",
+      "physical_description": "398 s., il.; 390 s., il.",
+      "series": "(Klasyka Polska)",
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 4617,
+          "name": "Kurpisz",
+          "city": "Poznań"
+        }
+      ],
+      "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "publikacja wielotomowa lub oznaczenie tomów"
+    },
+    {
+      "pbl_id": 730196,
+      "title": "Lalka. Powieść w dwóch tomach",
+      "original_title": null,
+      "publication_year": 2000,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": "1-2",
+      "physical_description": "414 s.; 412 s.",
+      "series": "(Perły Literatury)",
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 33938,
+          "name": "Mea",
+          "city": "Warszawa"
+        }
+      ],
+      "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "publikacja wielotomowa lub oznaczenie tomów"
+    },
+    {
+      "pbl_id": 724015,
+      "title": "Lalka",
+      "original_title": null,
+      "publication_year": 2001,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "671 s.",
+      "series": null,
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 26195,
+          "name": "KWE",
+          "city": "Warszawa"
+        }
+      ],
+      "qualification_rule": "Tytuł dokładnie „Lalka”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": null
+    },
+    {
+      "pbl_id": 904266,
+      "title": "Lalka",
+      "original_title": null,
+      "publication_year": 2002,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": "1-3",
+      "physical_description": "349 s.; 378 s.; 314 s. [Edycja na podst. Pisma T. 11-13 Warszawa 1935]",
+      "series": null,
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 20551,
+          "name": "Świat Książki",
+          "city": "Warszawa"
+        }
+      ],
+      "qualification_rule": "Tytuł dokładnie „Lalka”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "publikacja wielotomowa lub oznaczenie tomów"
+    },
+    {
+      "pbl_id": 1189677,
+      "title": "[Lalka] Kukla. Roman",
+      "original_title": null,
+      "publication_year": 2002,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "734 s.: portr. [Instytut Bibliograficzny. Biblioteka Narodowa]",
+      "series": null,
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 35903,
+          "name": "EKSMO-Press",
+          "city": "Moskva"
+        }
+      ],
+      "qualification_rule": "Tytuł ma katalogową formę „[Lalka] …”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "prawdopodobny przekład"
+    },
+    {
+      "pbl_id": 828848,
+      "title": "Lalka",
+      "original_title": null,
+      "publication_year": 2003,
+      "publication_year_source": "inferred_from_physical_description",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "[2003], 649 s.",
+      "series": "(Lektura z Opracowaniem)",
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 26180,
+          "name": "Zielona Sowa",
+          "city": "Kraków"
+        }
+      ],
+      "qualification_rule": "Tytuł dokładnie „Lalka”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "rok tylko w opisie fizycznym"
+    },
+    {
+      "pbl_id": 1049186,
+      "title": "[Lalka] Kukla. Roman",
+      "original_title": null,
+      "publication_year": 2003,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "734 s.: portr.",
+      "series": null,
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 25550,
+          "name": "EKSMO",
+          "city": "Moskva"
+        }
+      ],
+      "qualification_rule": "Tytuł ma katalogową formę „[Lalka] …”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "prawdopodobny przekład"
+    },
+    {
+      "pbl_id": 1294537,
+      "title": "Lalka. [Powieść]",
+      "original_title": null,
+      "publication_year": 2004,
+      "publication_year_source": "inferred_from_physical_description",
+      "original_language": "pol",
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "[2004], 596, [3] s.",
+      "series": "(Złota Seria)",
+      "bn_number": "2278181",
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 26180,
+          "name": "Zielona Sowa",
+          "city": "Kraków"
+        }
+      ],
+      "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "rok tylko w opisie fizycznym"
+    },
+    {
+      "pbl_id": 1297832,
+      "title": "Lalka. [Powieść]",
+      "original_title": null,
+      "publication_year": 2004,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": "pol",
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "585, [4] s.",
+      "series": "(Arcydzieła Literatury Polskiej)",
+      "bn_number": "2355310",
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 26180,
+          "name": "Zielona Sowa",
+          "city": "Kraków"
+        }
+      ],
+      "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": null
+    },
+    {
+      "pbl_id": 1465021,
+      "title": "Kukla. Roman. [Powieść]",
+      "original_title": "Lalka",
+      "publication_year": 2004,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "736, [2] s.: portr.",
+      "series": null,
+      "bn_number": null,
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 125157,
+          "name": "Eksmo",
+          "city": "Moskva"
+        }
+      ],
+      "qualification_rule": "Pole tytułu oryginału ma wartość „Lalka”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "prawdopodobny przekład"
+    },
+    {
+      "pbl_id": 1348632,
+      "title": "Lalka. [Powieść]",
+      "original_title": null,
+      "publication_year": 2005,
+      "publication_year_source": "inferred_from_physical_description",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "[2005], 585, [7] s.",
+      "series": "(Arcydzieła Literatury Polskiej)",
+      "bn_number": "26614",
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 26180,
+          "name": "Zielona Sowa",
+          "city": "Kraków"
+        }
+      ],
+      "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "rok tylko w opisie fizycznym"
+    },
+    {
+      "pbl_id": 1348646,
+      "title": "Lalka. [Powieść]",
+      "original_title": null,
+      "publication_year": 2005,
+      "publication_year_source": "inferred_from_physical_description",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "[2005], 585, [4] s.",
+      "series": null,
+      "bn_number": "26628",
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 67034,
+          "name": "Wydawnictwo \"Zielona Sowa\"",
+          "city": "Kraków"
+        }
+      ],
+      "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "rok tylko w opisie fizycznym"
+    },
+    {
+      "pbl_id": 1352992,
+      "title": "Wan'ou. [Powieść]",
+      "original_title": "Lalka",
+      "publication_year": 2005,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": "chi",
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "[2], 874 s.",
+      "series": null,
+      "bn_number": "31050",
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 47148,
+          "name": "Shang hai yi wen chu ban she",
+          "city": "Shang hai"
+        }
+      ],
+      "qualification_rule": "Pole tytułu oryginału ma wartość „Lalka”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "prawdopodobny przekład"
+    },
+    {
+      "pbl_id": 1353011,
+      "title": "Lalka. [Powieść]",
+      "original_title": null,
+      "publication_year": 2005,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "955, [1] s.",
+      "series": "(Biblioteka Gazety Wyborczej. XIX Wiek, 22)",
+      "bn_number": "31070",
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 128622,
+          "name": "Mediasat Group",
+          "city": "[Madryt]"
+        }
+      ],
+      "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": null
+    },
+    {
+      "pbl_id": 1358257,
+      "title": "Lalka. [Powieść]",
+      "original_title": null,
+      "publication_year": 2006,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "668 s., il. Na stronie tytułowej: Notatki na marginesie, szczegółowe opracowanie, streszczenie.",
+      "series": "(Lektura z Opracowaniem)",
+      "bn_number": "33169",
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 28328,
+          "name": "Wydawnictwo Greg",
+          "city": "Kraków"
+        }
+      ],
+      "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": null
+    },
+    {
+      "pbl_id": 1348677,
+      "title": "Lalka. [Powieść]",
+      "original_title": null,
+      "publication_year": 2007,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "378, [3] s. Tekst wg ed.: Pisma. T. 11-13, Warszawa 1935.",
+      "series": null,
+      "bn_number": "26659",
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 25733,
+          "name": "Świat Książki - Bertelsmann Media",
+          "city": "Warszawa"
+        }
+      ],
+      "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": null
+    },
+    {
+      "pbl_id": 1348678,
+      "title": "Lalka. [Powieść]",
+      "original_title": null,
+      "publication_year": 2007,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "349 s. Tekst wg: Pisma. T. 11-13, Warszawa 1935.",
+      "series": null,
+      "bn_number": "26660",
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 25733,
+          "name": "Świat Książki - Bertelsmann Media",
+          "city": "Warszawa"
+        }
+      ],
+      "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": null
+    },
+    {
+      "pbl_id": 1348680,
+      "title": "Lalka. [Powieść]",
+      "original_title": null,
+      "publication_year": 2007,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "314, [1] s. Tekst wg: Pisma. T. 11-13, Warszawa 1935.",
+      "series": null,
+      "bn_number": "26662",
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 25733,
+          "name": "Świat Książki - Bertelsmann Media",
+          "city": "Warszawa"
+        }
+      ],
+      "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": null
+    },
+    {
+      "pbl_id": 1351061,
+      "title": "Lalka. [Powieść]",
+      "original_title": null,
+      "publication_year": 2007,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "[2], 668 s., il. Na stronie tytułowej: Notatki na marginesie, cytaty, które warto znać, streszczenie.",
+      "series": "(Lektura: wydanie z opracowaniem)",
+      "bn_number": "29066",
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 28328,
+          "name": "Wydawnictwo Greg",
+          "city": "Kraków"
+        }
+      ],
+      "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": null
+    },
+    {
+      "pbl_id": 1353006,
+      "title": "La muneca. [Powieść]",
+      "original_title": "Lalka",
+      "publication_year": 2007,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": "spa",
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "1390, [1] s., il.",
+      "series": "(Tras 3 Letras, 9)",
+      "bn_number": "31064",
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 128676,
+          "name": "KRK Ediciones",
+          "city": "Oviedo"
+        }
+      ],
+      "qualification_rule": "Pole tytułu oryginału ma wartość „Lalka”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "prawdopodobny przekład"
+    },
+    {
+      "pbl_id": 1351060,
+      "title": "Lalka. [Powieść]",
+      "original_title": null,
+      "publication_year": 2008,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "[2], 668 s., il. Na stronie tytułowej: Notatki na marginesie, cytaty, które warto znać, streszczenie.",
+      "series": "(Lektury Grega)",
+      "bn_number": "29065",
+      "bn_url": null,
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 28328,
+          "name": "Wydawnictwo Greg",
+          "city": "Kraków"
+        }
+      ],
+      "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": null
+    },
+    {
+      "pbl_id": 1420509,
+      "title": "Lalka. [Powieść]",
+      "original_title": null,
+      "publication_year": 2009,
+      "publication_year_source": "inferred_from_physical_description",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "[2009], 650, [6] s.",
+      "series": "(Lektura z Opracowaniem i Audiobookiem)",
+      "bn_number": "7507",
+      "bn_url": "https://katalogi.bn.org.pl/discovery/fulldisplay?docid=alma991051825799705066&context=L&vid=48OMNIS_NLOP:48OMNIS_NLOP&lang=pl",
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 67034,
+          "name": "Wydawnictwo \"Zielona Sowa\"",
+          "city": "Kraków"
+        }
+      ],
+      "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "rok tylko w opisie fizycznym"
+    },
+    {
+      "pbl_id": 1422691,
+      "title": "Lalka. [Powieść]",
+      "original_title": null,
+      "publication_year": 2009,
+      "publication_year_source": "inferred_from_physical_description",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "[2009], 585, [4] s.",
+      "series": "(Złota Seria)",
+      "bn_number": "4080",
+      "bn_url": "https://katalogi.bn.org.pl/discovery/fulldisplay?docid=alma991049063699705066&context=L&vid=48OMNIS_NLOP:48OMNIS_NLOP&lang=pl",
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 67034,
+          "name": "Wydawnictwo \"Zielona Sowa\"",
+          "city": "Kraków"
+        }
+      ],
+      "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "rok tylko w opisie fizycznym"
+    },
+    {
+      "pbl_id": 1422692,
+      "title": "Lalka. [Powieść]",
+      "original_title": null,
+      "publication_year": 2009,
+      "publication_year_source": "inferred_from_physical_description",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "[2009], 649, [7] s., U dołu okł.: Pozytywizm.",
+      "series": "(Lektura z Opracowaniem)",
+      "bn_number": "4081",
+      "bn_url": "https://katalogi.bn.org.pl/discovery/fulldisplay?docid=alma991049063919705066&context=L&vid=48OMNIS_NLOP:48OMNIS_NLOP&lang=pl",
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 67034,
+          "name": "Wydawnictwo \"Zielona Sowa\"",
+          "city": "Kraków"
+        }
+      ],
+      "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "rok tylko w opisie fizycznym"
+    },
+    {
+      "pbl_id": 1432509,
+      "title": "Lalka. [Powieść]",
+      "original_title": null,
+      "publication_year": 2010,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": "Wydanie 2. rozszerzone i uzupełnione.",
+      "volumes": null,
+      "physical_description": "[2], 676 s., il.",
+      "series": "(Lektury Grega)",
+      "bn_number": "201005168",
+      "bn_url": "https://katalogi.bn.org.pl/discovery/fulldisplay?docid=alma9910251436505606&context=L&vid=48OMNIS_NLOP:48OMNIS_NLOP&lang=pl",
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 28328,
+          "name": "Wydawnictwo Greg",
+          "city": "Kraków"
+        }
+      ],
+      "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": null
+    },
+    {
+      "pbl_id": 1433507,
+      "title": "Lalka. [Powieść]",
+      "original_title": null,
+      "publication_year": 2010,
+      "publication_year_source": "inferred_from_physical_description",
+      "original_language": null,
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "[2010], 923, [1] s.",
+      "series": "(Arcydzieła Literatury Polskiej)",
+      "bn_number": "201006655",
+      "bn_url": "https://katalogi.bn.org.pl/discovery/fulldisplay?docid=alma9910322092405606&context=L&vid=48OMNIS_NLOP:48OMNIS_NLOP&lang=pl",
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 67034,
+          "name": "Wydawnictwo \"Zielona Sowa\"",
+          "city": "Kraków"
+        }
+      ],
+      "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "rok tylko w opisie fizycznym"
+    },
+    {
+      "pbl_id": 1434532,
+      "title": "Kukla. [Powieść]",
+      "original_title": "Lalka",
+      "publication_year": 2010,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": "rus",
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "812, [1] s.",
+      "series": "(Biblioteka zarubežnoj klassiki (Slovo); LXXVIII)",
+      "bn_number": "201008188",
+      "bn_url": "https://katalogi.bn.org.pl/discovery/fulldisplay?docid=alma9910397065605606&context=L&vid=48OMNIS_NLOP:48OMNIS_NLOP&lang=pl",
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 144141,
+          "name": "Slovo / Slovo",
+          "city": "Moskva"
+        }
+      ],
+      "qualification_rule": "Pole tytułu oryginału ma wartość „Lalka”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "prawdopodobny przekład"
+    },
+    {
+      "pbl_id": 1434852,
+      "title": "Kukla. [Powieść]",
+      "original_title": "Lalka",
+      "publication_year": 2010,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": "rus",
+      "edition_statement": null,
+      "volumes": null,
+      "physical_description": "956, [2] s.",
+      "series": null,
+      "bn_number": "201008675",
+      "bn_url": "https://katalogi.bn.org.pl/discovery/fulldisplay?docid=alma9910421115905606&context=L&vid=48OMNIS_NLOP:48OMNIS_NLOP&lang=pl",
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 28828,
+          "name": "AST",
+          "city": "Moskva"
+        },
+        {
+          "pbl_id": 128695,
+          "name": "Astrel'",
+          "city": "Moskva"
+        }
+      ],
+      "qualification_rule": "Pole tytułu oryginału ma wartość „Lalka”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": "więcej niż jeden wydawca; prawdopodobny przekład"
+    },
+    {
+      "pbl_id": 1457647,
+      "title": "Lalka. [Powieść]",
+      "original_title": null,
+      "publication_year": 2012,
+      "publication_year_source": "ZA_ROK_WYDANIA",
+      "original_language": null,
+      "edition_statement": "Wyd. 2. popr. i uzup.",
+      "volumes": null,
+      "physical_description": "676 s. Na stronie tyt.: Notatki na marginesie, cytaty, które warto znać, streszczenie.",
+      "series": null,
+      "bn_number": "201204982",
+      "bn_url": "https://katalogi.bn.org.pl/discovery/fulldisplay?docid=alma9910276389405606&context=L&vid=48OMNIS_NLOP:48OMNIS_NLOP&lang=pl",
+      "parent_pbl_id": null,
+      "publishers": [
+        {
+          "pbl_id": 28328,
+          "name": "Wydawnictwo Greg",
+          "city": "Kraków"
+        }
+      ],
+      "qualification_rule": "Tytuł zaczyna się od „Lalka.”",
+      "review_status": "approved",
+      "review_notes": null,
+      "review_flags": null
+    }
+  ]
+}

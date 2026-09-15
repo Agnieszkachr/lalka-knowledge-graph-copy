@@ -8,7 +8,7 @@ Projekt wykorzystuje „Lalkę” Bolesława Prusa jako studium przypadku. Jego 
 
 **[Otwórz Lalka Knowledge Graph](https://polskabibliografialiteracka.github.io/lalka-knowledge-graph/)**
 
-Wizualizacja została przygotowana do przeglądania w przeglądarce i udostępniona za pomocą GitHub Pages. Umożliwia filtrowanie typów obiektów, wyszukiwanie węzłów oraz sprawdzanie relacji i podstawowych informacji o rekordach.
+Wizualizacja została przygotowana do przeglądania w przeglądarce i udostępniona za pomocą GitHub Pages. Zawiera osobny widok 55 zweryfikowanych wydań „Lalki”, które można grupować chronologicznie albo według wydawcy, a także pozwala sprawdzać relacje i podstawowe informacje o rekordach.
 
 ## Co przedstawia graf?
 
@@ -27,12 +27,13 @@ Warstwa prezentacyjna obejmuje obecnie:
 |---|---:|
 | Utwór | 1 |
 | Adaptacje | 2 |
+| Wydania | 55 |
 | Publikacje | 104 |
 | Osoby | 75 |
 | Źródła | 64 |
-| Wydawcy | 10 |
-| **Wszystkie węzły** | **256** |
-| **Relacje** | **312** |
+| Wydawcy | 53 |
+| **Wszystkie węzły** | **354** |
+| **Relacje** | **425** |
 
 Liczby pochodzą z metadanych zapisanych w pliku `data/lalka_presentation_graph.json`.
 
@@ -59,6 +60,7 @@ Warstwa prezentacyjna wykorzystuje następujące typy węzłów:
 | `Work` | utwór literacki |
 | `Person` | twórca utworu lub osoba związana z publikacją |
 | `Adaptation` | adaptacja ekranowa |
+| `Edition` | zweryfikowane wydanie książkowe utworu |
 | `Publication` | publikacja lub inny rekord bibliograficzny |
 | `Event` | wydarzenie |
 | `Publisher` | wydawca |
@@ -70,6 +72,7 @@ Najważniejsze relacje:
 |---|---|
 | `CREATED_BY` | utwór został stworzony przez osobę |
 | `ADAPTED_AS` | utwór został zaadaptowany |
+| `HAS_EDITION` | utwór ma zweryfikowane wydanie |
 | `HAS_RECORD` | adaptacja ma powiązany rekord bibliograficzny |
 | `RELATED_TO` | rekord bibliograficzny jest związany z utworem |
 | `AUTHORED_BY` | publikacja ma autora |
@@ -80,6 +83,8 @@ Najważniejsze relacje:
 flowchart TD
     W["Lalka — utwór"] -->|CREATED_BY| P["Bolesław Prus"]
     W -->|ADAPTED_AS| A["Adaptacja"]
+    W -->|HAS_EDITION| E["Wydanie"]
+    E -->|PUBLISHED_BY| D["Wydawca"]
     A -->|HAS_RECORD| R["Publikacja"]
     R -->|AUTHORED_BY| O["Osoba"]
     R -->|FROM_SOURCE| S["Źródło"]
@@ -96,10 +101,13 @@ flowchart TD
     PBL["Baza PBL"] --> E["Ekstrakcja"]
     E --> G["Pełny graf"]
     G --> PG["Warstwa prezentacyjna"]
+    S["Zrzut PBL Oracle"] --> C["Zweryfikowane wydania"]
+    C --> PG
     PG --> V["Interaktywna wizualizacja"]
 ```
 
 - `data/lalka_graph.json` zachowuje techniczne typy obiektów i relacje wynikające ze struktury danych PBL;
+- `data/lalka_editions_verified.json` przechowuje 55 indywidualnie zatwierdzonych wydań pozyskanych ze zrzutu Oracle;
 - `data/lalka_presentation_graph.json` upraszcza ten model na potrzeby wizualizacji;
 - `docs/index.html` zawiera opublikowaną wersję interaktywnego grafu.
 
@@ -116,9 +124,11 @@ Graf przedstawia określony wycinek PBL, a nie pełną bibliografię „Lalki”
 - adaptacje ekranowe o identyfikatorach `304249` i `136679`;
 - ustaloną liczbę poziomów hierarchii pobieranych dla poszczególnych grup rekordów.
 
-Obecny graf nie powinien być traktowany jako kompletny wykaz wszystkich wydań książkowych „Lalki”, wszystkich adaptacji ani całej recepcji utworu. Pokazuje rekordy osiągalne zgodnie z przyjętymi regułami ekstrakcji i modelowania.
+Zbiór 55 wydań obejmuje rekordy typu `KS` powiązane z Bolesławem Prusem (PBL `3426`), wybrane regułami tytułowymi i następnie zweryfikowane redakcyjnie. Nie powinien być traktowany jako kompletny wykaz wszystkich historycznych wydań „Lalki”; przedstawia zakres obecny w zrzucie PBL i objęty przyjętą procedurą selekcji.
 
-Dane zostały wyodrębnione 28 sierpnia 2026 roku. Liczebność zbiorów wejściowych i parametry ekstrakcji zapisano w `data/lalka_extraction_metadata.json`.
+Wartość `original_language` odtwarza pole `ZA_JEZYK_ORYGINALU`. Nie jest interpretowana jako język konkretnego wydania ani jako wystarczająca podstawa do utworzenia relacji przekładu.
+
+Podstawowy korpus wyodrębniono 28 sierpnia 2026 roku. Wydania przygotowano dodatkowo na podstawie zrzutu `pbl_snapshot_2026-09-14_13-32-53` utworzonego przez repozytorium `PBL-oracle-export`. Liczebność zbiorów wejściowych i parametry podstawowej ekstrakcji zapisano w `data/lalka_extraction_metadata.json`, a proweniencję wydań w `data/lalka_editions_verified.json`.
 
 ## Struktura repozytorium
 
@@ -132,12 +142,14 @@ lalka-knowledge-graph/
 │   ├── lalka_creators_raw.json
 │   ├── lalka_publishers_raw.json
 │   ├── lalka_extraction_metadata.json
+│   ├── lalka_editions_verified.json
 │   ├── lalka_graph.json
 │   └── lalka_presentation_graph.json
 ├── docs/
 │   └── index.html
 ├── scripts/
 │   ├── extract_lalka.py
+│   ├── prepare_verified_editions.py
 │   ├── inspect_lalka_data.py
 │   ├── build_graph.py
 │   ├── inspect_graph.py
@@ -185,6 +197,18 @@ python scripts/inspect_graph.py
 ```
 
 ### 4. Budowa i kontrola warstwy prezentacyjnej
+
+Plik zweryfikowanych wydań jest wersjonowany w repozytorium. Można go odtworzyć ze zrzutu przygotowanego przez `PBL-oracle-export` i pliku kandydatów po przeglądzie redakcyjnym:
+
+```bash
+python scripts/prepare_verified_editions.py \
+  --snapshot-dir /ścieżka/do/zrzutu \
+  --snapshot-name pbl_snapshot_2026-09-14_13-32-53 \
+  --candidates /ścieżka/do/lalka_candidates.json \
+  --approve-all
+```
+
+Następnie:
 
 ```bash
 python scripts/build_presentation_graph.py

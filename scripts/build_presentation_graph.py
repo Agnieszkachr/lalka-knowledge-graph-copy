@@ -20,6 +20,7 @@ Node types:
     Work
     Person
     Adaptation
+    Edition
     Publication
     Event
     Publisher
@@ -29,6 +30,7 @@ Presentation relationships:
 
     CREATED_BY
     ADAPTED_AS
+    HAS_EDITION
     HAS_RECORD
     RELATED_TO
     AUTHORED_BY
@@ -91,6 +93,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_DIR = SCRIPT_DIR.parent
 
 INPUT_FILE = PROJECT_DIR / "data" / "lalka_graph.json"
+EDITIONS_FILE = PROJECT_DIR / "data" / "lalka_editions_verified.json"
 OUTPUT_FILE = PROJECT_DIR / "data" / "lalka_presentation_graph.json"
 
 
@@ -659,6 +662,69 @@ class PresentationGraphBuilder:
             )
 
     # =========================================================================
+    # VERIFIED EDITIONS
+    # =========================================================================
+
+    def add_verified_editions(self, editions_data):
+        """Add editions approved during curatorial review of a PBL snapshot."""
+
+        for edition in editions_data.get("editions", []):
+            record_id = f"record:{edition['pbl_id']}"
+            publishers = edition.get("publishers", [])
+            publisher_names = [item["name"] for item in publishers]
+            year = edition.get("publication_year")
+            label_parts = [str(year)] if year else []
+            if publisher_names:
+                label_parts.append(" / ".join(publisher_names))
+            label_suffix = ", ".join(label_parts)
+            label = "Lalka" + (f" ({label_suffix})" if label_suffix else "")
+
+            properties = {
+                key: value
+                for key, value in edition.items()
+                if key != "publishers" and value is not None
+            }
+            properties.update({
+                "pbl_type": "KS",
+                "role": "verified_edition",
+                "publisher_names": publisher_names,
+                "publisher_city": [
+                    item["city"] for item in publishers if item.get("city")
+                ],
+            })
+
+            self.add_node(
+                node_id_value=record_id,
+                presentation_type_value="Edition",
+                label=label,
+                **properties,
+            )
+            self.add_edge(
+                source=LALKA_ID,
+                target=record_id,
+                relationship="HAS_EDITION",
+                relation_source="curated_pbl_snapshot",
+                review_status=edition.get("review_status"),
+            )
+
+            for publisher in publishers:
+                publisher_id = f"publisher:{publisher['pbl_id']}"
+                self.add_node(
+                    node_id_value=publisher_id,
+                    presentation_type_value="Publisher",
+                    label=publisher["name"],
+                    pbl_id=publisher["pbl_id"],
+                    city=publisher.get("city"),
+                    role="edition_publisher",
+                )
+                self.add_edge(
+                    source=record_id,
+                    target=publisher_id,
+                    relationship="PUBLISHED_BY",
+                    relation_source="pbl_snapshot",
+                )
+
+    # =========================================================================
     # ADAPTATION CHILD RECORDS
     # =========================================================================
 
@@ -1007,6 +1073,9 @@ class PresentationGraphBuilder:
                 "source_graph":
                     "lalka_graph.json",
 
+                "curated_editions":
+                    "lalka_editions_verified.json",
+
                 "root":
                     LALKA_ID,
 
@@ -1022,6 +1091,7 @@ class PresentationGraphBuilder:
                         "Work",
                         "Person",
                         "Adaptation",
+                        "Edition",
                         "Publication",
                         "Event",
                         "Publisher",
@@ -1031,6 +1101,7 @@ class PresentationGraphBuilder:
                     "relationships": [
                         "CREATED_BY",
                         "ADAPTED_AS",
+                        "HAS_EDITION",
                         "HAS_RECORD",
                         "RELATED_TO",
                         "AUTHORED_BY",
@@ -1168,6 +1239,24 @@ def main():
     )
 
     graph.add_manual_adaptations()
+
+    # -------------------------------------------------------------------------
+    # VERIFIED EDITIONS
+    # -------------------------------------------------------------------------
+
+    if not EDITIONS_FILE.exists():
+        raise FileNotFoundError(
+            "Curated editions file not found:\n"
+            f"{EDITIONS_FILE}"
+        )
+
+    editions_data = load_json(EDITIONS_FILE)
+
+    print(
+        "Adding verified editions..."
+    )
+
+    graph.add_verified_editions(editions_data)
 
     # -------------------------------------------------------------------------
     # ADAPTATION CHILD RECORDS
