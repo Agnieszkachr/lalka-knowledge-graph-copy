@@ -4,7 +4,6 @@ import html
 import json
 
 from bs4 import BeautifulSoup
-from pyvis.network import Network
 
 
 # ============================================================
@@ -19,6 +18,15 @@ BACKGROUND_IMAGE_FILE = PROJECT_ROOT / "assets" / "lalka-background.jpg"
 
 OUTPUT_DIR = PROJECT_ROOT / "docs"
 OUTPUT_FILE = OUTPUT_DIR / "index.html"
+
+VIS_NETWORK_CSS = (
+    "https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/"
+    "dist/dist/vis-network.min.css"
+)
+VIS_NETWORK_JS = (
+    "https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/"
+    "standalone/umd/vis-network.min.js"
+)
 
 
 # ============================================================
@@ -102,6 +110,15 @@ RELATIONSHIP_LABELS = {
     "HAS_RECORD": "rekord",
     "PUBLISHED_BY": "wydawca",
     "RELATED_TO": "powiązane",
+    "REVIEWS": "recenzja",
+}
+
+
+ADAPTATION_MEDIUM_LABELS = {
+    "film": "film",
+    "tv_series": "serial telewizyjny",
+    "radio": "audycja radiowa",
+    "theatre": "spektakl teatralny",
 }
 
 
@@ -146,6 +163,11 @@ EDGE_STYLES = {
         "label": "",
     },
     "FROM_SOURCE": {
+        "width": 1.0,
+        "color": "#c8c3bb",
+        "label": "",
+    },
+    "REVIEWS": {
         "width": 1.0,
         "color": "#c8c3bb",
         "label": "",
@@ -214,6 +236,15 @@ def clean_html(value):
     return html.unescape(text)
 
 
+def format_year(value):
+    """Return a year without a decimal part (2001.0 -> 2001)."""
+
+    if isinstance(value, float) and value.is_integer():
+        return int(value)
+
+    return value
+
+
 def shorten_text(value, max_length):
     """
     Shorten text at a word boundary.
@@ -269,6 +300,13 @@ def get_node_title(node):
 
     if get_node_type(node) == "Edition":
         return clean_html(node.get("label") or properties.get("title"))
+
+    medium = ADAPTATION_MEDIUM_LABELS.get(
+        properties.get("medium")
+    )
+
+    if get_node_type(node) == "Adaptation" and medium:
+        return f"{clean_html(node.get('label'))} ({medium})"
 
     # --------------------------------------------------------
     # Persons
@@ -407,7 +445,14 @@ def get_metadata(node):
     )
 
     if publication_year is not None:
-        metadata["Rok publikacji"] = publication_year
+        metadata["Rok publikacji"] = format_year(publication_year)
+
+    medium = ADAPTATION_MEDIUM_LABELS.get(
+        properties.get("medium")
+    )
+
+    if medium:
+        metadata["Rodzaj adaptacji"] = medium
 
     if get_node_type(node) == "Edition":
         edition_fields = (
@@ -430,6 +475,12 @@ def get_metadata(node):
         if properties.get("publication_year_source") == "inferred_from_physical_description":
             metadata["Ustalenie roku"] = "rok wywnioskowany z opisu fizycznego"
 
+        if properties.get("is_translation"):
+            metadata["Przekład"] = "tak"
+
+        if properties.get("edition_group"):
+            metadata["Część edycji wielotomowej"] = properties["edition_group"]
+
         metadata["Weryfikacja"] = "zatwierdzone redakcyjnie"
 
     # --------------------------------------------------------
@@ -442,6 +493,18 @@ def get_metadata(node):
         metadata["Źródło"] = clean_html(
             source
         )
+
+    merged_ids = properties.get("merged_pbl_ids")
+
+    if merged_ids:
+        metadata["Scalone duplikaty PBL"] = ", ".join(
+            str(item) for item in merged_ids
+        )
+
+    name_variants = properties.get("name_variants")
+
+    if name_variants:
+        metadata["Warianty nazwy w PBL"] = " / ".join(name_variants)
 
     return metadata
 
@@ -595,29 +658,10 @@ def main():
     )
 
     # --------------------------------------------------------
-    # Create PyVis network
-    # --------------------------------------------------------
-
-    net = Network(
-        height="100vh",
-        width="100%",
-        directed=True,
-        bgcolor=BACKGROUND,
-        font_color=TEXT_COLOR,
-        select_menu=False,
-        filter_menu=False,
-        # Keep the generated GitHub Pages document small. Embedding the full
-        # vis-network bundle makes index.html unnecessarily large.
-        cdn_resources="remote",
-    )
-
-    # --------------------------------------------------------
     # Physics / interaction
     # --------------------------------------------------------
 
-    net.set_options(
-        json.dumps(
-            {
+    network_options = {
                 "interaction": {
                     "hover": True,
                     "navigationButtons": True,
@@ -699,8 +743,9 @@ def main():
                     },
                 },
             }
-        )
-    )
+
+    vis_nodes = []
+    vis_edges = []
 
     # ========================================================
     # Nodes
@@ -754,19 +799,36 @@ def main():
         # Add node
         # ----------------------------------------------------
 
-        net.add_node(
-            prepared["id"],
-            label=prepared["label"],
-            title=prepared["title"],
-            color=prepared["color"],
-            size=prepared["size"],
-            font=prepared["font"],
-            borderWidth=prepared["borderWidth"],
-            shadow=prepared["shadow"],
-            originalColor=prepared["originalColor"],
-            nodeType=node_type,
-            publicationYear=node.get("properties", {}).get("publication_year"),
+        vis_nodes.append(
+            {
+                "id": prepared["id"],
+                "label": prepared["label"],
+                "title": prepared["title"],
+                "color": prepared["color"],
+                "size": prepared["size"],
+                "font": prepared["font"],
+                "borderWidth": prepared["borderWidth"],
+                "shadow": prepared["shadow"],
+                "originalColor": prepared["originalColor"],
+                "nodeType": node_type,
+                "publicationYear": format_year(
+                    node.get("properties", {}).get("publication_year")
+                ),
+                "shape": "dot",
+            }
         )
+
+        # Translations are drawn with a dashed border.
+        if node.get("properties", {}).get("is_translation"):
+            vis_nodes[-1]["borderWidth"] = 3
+            vis_nodes[-1]["color"] = dict(
+                prepared["color"],
+                border=TEXT_COLOR,
+            )
+            vis_nodes[-1]["originalColor"] = vis_nodes[-1]["color"]
+            vis_nodes[-1]["shapeProperties"] = {
+                "borderDashes": [4, 3],
+            }
 
         # ----------------------------------------------------
         # Details data
@@ -819,23 +881,54 @@ def main():
 
         edge_id = f"edge_{index}"
 
-        net.add_edge(
-            source,
-            target,
-            id=edge_id,
-            label=label,
-            title=relationship_label,
-            width=style["width"],
-            color=style["color"],
-            arrows="to",
-            smooth=True,
+        vis_edges.append(
+            {
+                "from": source,
+                "to": target,
+                "id": edge_id,
+                "label": label,
+                "title": relationship_label,
+                "width": style["width"],
+                "color": style["color"],
+                "arrows": "to",
+                "smooth": True,
 
-            # Original settings used by JavaScript
-            # when the graph is reset.
-            originalWidth=style["width"],
-            originalColor=style["color"],
-            relationship=relationship,
+                # Original settings used by JavaScript
+                # when the graph is reset.
+                "originalWidth": style["width"],
+                "originalColor": style["color"],
+                "relationship": relationship,
+            }
         )
+
+    # ========================================================
+    # Edition statistics
+    # ========================================================
+
+    editions = [
+        node
+        for node in nodes
+        if get_node_type(node) == "Edition"
+    ]
+
+    edition_years = [
+        int(format_year(node["properties"]["publication_year"]))
+        for node in editions
+        if node.get("properties", {}).get("publication_year") is not None
+    ]
+
+    translation_count = sum(
+        1
+        for node in editions
+        if node.get("properties", {}).get("is_translation")
+    )
+
+    edition_button_title = html.escape(
+        f"{len(editions)} rekordów PBL, w tym {translation_count} "
+        f"przekładów; lata {min(edition_years)}–{max(edition_years)} "
+        "odpowiadają zasięgowi PBL, nie pełnej historii wydań",
+        quote=True,
+    ) if edition_years else ""
 
     # ========================================================
     # Logo
@@ -1332,7 +1425,7 @@ def main():
 
     <div class="view-controls" aria-label="Widok grafu">
         <button id="view-all" class="active" type="button">Cały graf</button>
-        <button id="view-editions" type="button">Wydania (55)</button>
+        <button id="view-editions" type="button" title="{edition_button_title}">Wydania ({len(editions)})</button>
         <div id="edition-grouping" class="edition-grouping">
             <button id="group-chronology" class="active" type="button">Chronologicznie</button>
             <button id="group-publishers" type="button">Według wydawcy</button>
@@ -1372,6 +1465,14 @@ def main():
                 style="background:{COLORS["Edition"]};"
             ></span>
             Wydanie
+        </div>
+
+        <div class="legend-item">
+            <span
+                class="legend-dot"
+                style="background:{COLORS["Edition"]};border:2px dashed {TEXT_COLOR};box-sizing:border-box;"
+            ></span>
+            Wydanie — przekład
         </div>
 
         <div class="legend-item">
@@ -1442,7 +1543,7 @@ def main():
          *
          *     const network = window.network;
          *
-         * PyVis already creates the `network` variable
+         * The page template already creates the `network` variable
          * in the generated HTML.
          */
 
@@ -1510,7 +1611,13 @@ def main():
                 .filter(node => node.nodeType === "Edition")
                 .sort((a, b) => (a.publicationYear - b.publicationYear) || String(a.id).localeCompare(String(b.id)));
             const editionIds = new Set(editions.map(node => node.id));
-            const years = [...new Set(editions.map(node => node.publicationYear))];
+            // Show every year of the covered range, including years
+            // without editions, so that gaps remain visible.
+            const editionYears = editions.map(node => node.publicationYear).filter(year => year !== null);
+            const years = [];
+            for (let year = Math.min(...editionYears); year <= Math.max(...editionYears); year++) {{
+                years.push(year);
+            }}
             ensureYearMarkers(years);
 
             if (grouping === "chronology") {{
@@ -1530,7 +1637,7 @@ def main():
                     const x = -870 + column * 290;
                     const y = -430 + row * 470;
                     updates.push({{id: `timeline:${{year}}`, x: x, y: y, hidden: false}});
-                    byYear[year].forEach((edition, index) => {{
+                    (byYear[year] || []).forEach((edition, index) => {{
                         updates.push({{id: edition.id, x: x, y: y + 90 + index * 72, hidden: false}});
                     }});
                 }});
@@ -2119,29 +2226,42 @@ def main():
 
 
     # ========================================================
-    # Generate PyVis HTML
+    # Generate HTML
     # ========================================================
 
-    # Do NOT use net.write_html().
-    #
-    # On Windows PyVis can use the system encoding (e.g.
-    # cp1250), which fails for some Unicode characters.
-    #
-    # generate_html() gives us the HTML as a Python string,
-    # which we explicitly save as UTF-8 below.
+    # The page is generated directly instead of through PyVis
+    # templates, so that docs/index.html is fully reproducible
+    # from this script and loads only vis-network from the CDN.
 
-    html_content = net.generate_html(
-        notebook=False
-    )
-
-
-    # ========================================================
-    # Inject custom HTML
-    # ========================================================
-
-    html_content = html_content.replace(
-        "</body>",
-        custom_html + "\n</body>",
+    html_content = "\n".join(
+        [
+            "<!doctype html>",
+            '<html lang="pl">',
+            "<head>",
+            '<meta charset="utf-8">',
+            '<meta name="viewport" content="width=device-width, initial-scale=1">',
+            "<title>Lalka Knowledge Graph</title>",
+            f'<link rel="stylesheet" href="{VIS_NETWORK_CSS}">',
+            f'<script src="{VIS_NETWORK_JS}"></script>',
+            "<style>",
+            "#mynetwork { width: 100%; height: 100vh; }",
+            ".card, .card-body { width: 100%; height: 100%; margin: 0; padding: 0; }",
+            "</style>",
+            "</head>",
+            "<body>",
+            '<div class="card" style="width: 100%"><div id="mynetwork" class="card-body"></div></div>',
+            "<script>",
+            f"var nodes = new vis.DataSet({json.dumps(vis_nodes)});",
+            f"var edges = new vis.DataSet({json.dumps(vis_edges)});",
+            'var container = document.getElementById("mynetwork");',
+            "var data = {nodes: nodes, edges: edges};",
+            f"var options = {json.dumps(network_options)};",
+            "var network = new vis.Network(container, data, options);",
+            "</script>",
+            custom_html,
+            "</body>",
+            "</html>",
+        ]
     )
 
 
