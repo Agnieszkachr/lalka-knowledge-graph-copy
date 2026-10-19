@@ -1,0 +1,642 @@
+{
+  "metadata": {
+    "title": "Kandydaci do recepcji Lalki spoza hasła utworu",
+    "source_graph": "lalka_graph.json",
+    "presentation_graph": "lalka_presentation_graph.json",
+    "pattern": "lalk|lalc|wokulsk|rzeck|łęck|kukla|\\bdoll\\b",
+    "note": "Records matched by title or annotation. Not verified: each candidate requires an editorial decision.",
+    "record_count": 39,
+    "by_type": {
+      "BookRecord": 17,
+      "EventRecord": 5,
+      "OtherRecord": 15,
+      "PublicationRecord": 2
+    }
+  },
+  "candidates": [
+    {
+      "pbl_id": 25324,
+      "title": "Stanisław Wokulski: bohater \"Lalki\" B. Prusa. Próba ustalenia charakterystycznych cech osobowości postaci literackiej",
+      "graph_type": "BookRecord",
+      "record_kind": "książka o twórcy (przedmiotowa)",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": 1989,
+      "source": null,
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 25355,
+      "title": "\"Lalka\" Bolesława Prusa. Wystawa w Muzeum Bolesława Prusa w Nałęczowie, grudzień 1989 -czerwiec 1990",
+      "graph_type": "BookRecord",
+      "record_kind": "książka o twórcy (przedmiotowa)",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": 1989,
+      "source": null,
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 90160,
+      "title": "Pisma wybrane",
+      "graph_type": "BookRecord",
+      "record_kind": "książka twórcy (podmiotowa)",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": 1990,
+      "source": null,
+      "annotation": "1. Nowele. Wyboru dokonała Irena Orlewiczowa. 586 s.\n2. Nowele. Wyboru dokonała Irena Orlewiczowa. 565 s.\n3. Anielka. Placówka. Dzieci. 602 s.\n4. Lalka. 812 s.\n5. Emancypantki. 850 s.\n6. Faraon. 654 s.",
+      "matched_fields": [
+        "annotation"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 90170,
+      "title": "\"Lalka\". Konteksty stylu",
+      "graph_type": "BookRecord",
+      "record_kind": "książka o twórcy (przedmiotowa)",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": 1990,
+      "source": null,
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 90293,
+      "title": "\"Lalka\" Bolesława Prusa",
+      "graph_type": "BookRecord",
+      "record_kind": "książka o twórcy (przedmiotowa)",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": 1990,
+      "source": null,
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 213058,
+      "title": "Bolesław Prus. Twórczość i recepcja",
+      "graph_type": "BookRecord",
+      "record_kind": "książka o twórcy (przedmiotowa)",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": 1993,
+      "source": null,
+      "annotation": "[Materiały z sesji naukowej poświęconej twórczości Bolesława Prusa, Lublin-Nałęczów, 24-25 IV 1987:] [Eugenia Łoch, Stanisław Fita] Redaktorzy: Słowo wstępne * Część I: Janina Kulczycka-Saloni: Prus i Sienkiewicz - dialog czy polemika? - Stanisław Fita: Bolesław Prus a pozytywizm. - Eugenia Łoch: Bolesława Prusa dialog z czytelnikiem. - Zbigniew Przybyła: Z badań nad polifonicznością narracji w \"Lalce\" Prusa. - Józef Bachórz: O funkcjach starego subiekta w \"Lalce\". - Jan Tomkowski: Sennik Bolesława Prusa [motyw snu w twórczości Bolesława Prusa]. - Janina Szcześniak: Motywy detektywistyczne w pierwszych opowiadanich Bolesław Prusa. - Grzegorz Filip: Fantastyczne przypowieści i humoreski Bolesława Prusa. - Krzysztof Stępnik: Rewolucja i konstytucja. Bolesława Prusa figury myśli o polityce [\"Kroniki tygodniowe\"] * Część II: Barbara Kryda: Świat Bolesława Prusa w sądach uczniów. - Janusz Plisiecki: Filmowe adaptacje powieści Bolesława Prusa [\"Faraon\" w reżyserii Jerzego Kawalerowicza, \"Lalka\" w reżyserii Wojciecha Hasa, \"Placówka\" w reżyserii Zygmunta Skoniecznego, \"Pensja pani Latter\" na podstawie \"Emancypantek\" w reżyserii Stanisława Różewicza]. - Michał Jacek Mikoś: Amerykańskie tłumaczenie \"Faraona\" Prusa i echa jego recepcji [dot. tłum. Jeremiasza Curtina pt. \"The pharach and the priest\", Boston 1902].",
+      "matched_fields": [
+        "annotation"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 316706,
+      "title": "Lalka Bolesława Prusa. Semantyka, kompozycja, konteksty",
+      "graph_type": "BookRecord",
+      "record_kind": "książka o twórcy (przedmiotowa)",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": 1995,
+      "source": null,
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 342843,
+      "title": "O Prusie i Żeromskim",
+      "graph_type": "BookRecord",
+      "record_kind": "książka o twórcy (przedmiotowa)",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": 1995,
+      "source": null,
+      "annotation": "[Zawiera m.in.:] Stanisław Balbus: O Henryku Markiewiczu - opowieść biograficzna z dygresjami. - Od Autora. \"Lalka\". Inna zabawa \"Lalką\". \"Emancypantki\".",
+      "matched_fields": [
+        "annotation"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 363987,
+      "title": "\"Lalka\" czyli rozpad świata",
+      "graph_type": "BookRecord",
+      "record_kind": "książka o twórcy (przedmiotowa)",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": 1995,
+      "source": null,
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 471996,
+      "title": "Bolesław Prus",
+      "graph_type": "BookRecord",
+      "record_kind": "książka o twórcy (przedmiotowa)",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": 1998,
+      "source": null,
+      "annotation": "Wstęp.- I. \"Życie skromne\". II. \"Robota parobcza\". III. \"Powiastki\", czyli \"praca uboczna\". IV. \"Powieści z wielkich pytań naszej epoki\": 1. \"Placówka\" - \"powiastka, która \"rozrosła się ponad miarę\". - 2. \"Kto Lalkę przeżył - wiele przeżył\". - 3. \"Emancypantki\" - powieść, w której są \"bardzo ważne astronomiczne i filozoficzne rozmyślania\". - V. \"Faraon - powieść, która powinna \"rozejść się jak najszerzej i zostać jak najdłużej\". - VI. \"Dzieci, czyli rewolucja jako  \"tragedia pomyłek\".",
+      "matched_fields": [
+        "annotation"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 472496,
+      "title": "Jubileuszowe \"Żniwo u Prusa\". Materiały z międzynarodowej sesji prusowskiej w 1997 r.",
+      "graph_type": "BookRecord",
+      "record_kind": "książka o twórcy (przedmiotowa)",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": 1998,
+      "source": null,
+      "annotation": "I. \"Sercu serc\": Poetycki hołd Bolesławowi Prusowi. - Nie/jubileuszowe głosy o Prusie. Zebrał Zbigniew Przybyła. - Zbigniew Przybyła: Sesja prusowska w Częstochowie na tle współczesnej prusologii. - II. Prus-artysta: Grażyna Borkowska: Prusa filozofia życia. - Tadeusz Bujnicki: Jak jest zrobiona \"Katarynka\"?. - Zbigniew Przybyła: Bohaterowie powieści Prusa w świetle jego \"Najogólniejszych ideałów życiowych\". - Hanna Voisine-Jechova: Wielowarstwowość narracyjna \"Lalki\" w kontekście powieści europejskiej drugiej połowy ubiegłego wieku. - Jolanta Sztachelska: Bolesław Prus - w mieście, czyli w centrum świata. - Anna Janicka: Stanisław Wokulski - pozytywistyczne powroty do bezsilności. - Aneta Mazur: Jeszcze o kamieniu w \"Lalce\" Prusa. - Marta Rabikowska: Sprawa kobieca w \"Lalce\" Prusa, czyli mizoginizm zneutralizowany. - Wioletta Długosz: Tuż przed... Preludia sytuacji intymnych w \"Lalce\" Prusa. - Bogdan Burdziej: \"Lalka\" Prusa o genezie pogromu warszawskiego (1881). Rekonesans problemu. - Tomasz Sobieraj: Dwie wizje \"rozkładu społecznego\": \"Lalka\" Prusa i \"Warszawa\" [Mariana] Gawalewicza. - Paulina Mądry: Funkcja listów w \"Lalce\". - Renata Stachura: Między Bogiem a fosforem. Spór o filozofię i lektura Tomasza a Kempis w \"Emancypantkach\" Prusa. - Henryk Michalski: Naturalizm Prusa (a dekonstrukcja). - Tadeusz Budrewicz: Farys spieszony. Wokół \"Ze wspomnień cyklisty\". - III. Prus-publicysta: Krzysztof Stępnik: Poglądy i język Prusa-statysty w \"Kronikach\" (1874-1887). - Jerzy Konieczny: Kraszewski, Sienkiewicz i Prus o pruskich represjach wobec Polaków. - Czesława Mykita-Glensk: Bolesław Prus a Śląsk. - Barbara Konarska-Pabiniak: Wielkomiejski dziennikarz Prus o Płocku i okolicy. - Elżbieta Hurnikowa: Warszawa w felietonach Prusa - Wiedeń w felietonistyce austriackiej. - Tokimasa Sekiguchi: Bolesław Prus o Japonii i Japończykach. - Zofia Mocarska-Tycowa: Bolesław Prus o malarstwie. - Mirosław Łapot: Bolesław Prus o teatrzykach ogródkowych. -",
+      "matched_fields": [
+        "annotation"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 476683,
+      "title": "Spojrzenie na Prusa i jego bohaterów. Materiały z sesji w 150. rocznicę urodzin Bolesława Prusa",
+      "graph_type": "BookRecord",
+      "record_kind": "książka o twórcy (przedmiotowa)",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": 1998,
+      "source": null,
+      "annotation": "Stanisław Żak: Wstep. - Zbigniew Przybyła: Prusologia: przeszłość i aktualny stan badań. - Bogusław Dopart: Obcy. Bohater i światy powieściowe w \"Lalce\" Bolesława Prusa. - Tadeusz Budrewicz: O wierszach Bolesława Prusa. - Marek Pąkciński: Ironia i autokreacja w \"Kronikach\" Bolesława Prusa. - Wioletta Długosz: Węgierskie buciki i biel falbanek panny Eufemii w \"Emancypantkach\".",
+      "matched_fields": [
+        "annotation"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 1348713,
+      "title": "Lalka. Fragmenty. Wszystkie wątki, wszystkie istotne postaci",
+      "graph_type": "BookRecord",
+      "record_kind": "książka w haśle rzeczowym",
+      "section": "Materiały pomocnicze dla uczniów",
+      "parent_pbl_id": null,
+      "year": 2007,
+      "source": null,
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 1362771,
+      "title": "Prus versus Świętochowski. W sporze o naukowość, krytykę pozytywną i \"Lalkę\"",
+      "graph_type": "BookRecord",
+      "record_kind": "książka o twórcy (przedmiotowa)",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": 2008,
+      "source": null,
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 1380912,
+      "title": "[Zaproszenie] :[Inc.:] Dyrektor Muzeum Literatury im. Adama Mickiewicza Janusz Odrowąż-Pieniążek ma zaszczyt zaprosić na otwarcie wystawy: \"Warszawa \"Lalki\" Bolesława Prusa\". Wernisaż odbędzie się 30 marca 2006 roku o godz. 18.00 w siedzibie Muzeum Literatury w Warszawie Rynek Starego Miasta 20 [...]",
+      "graph_type": "BookRecord",
+      "record_kind": "książka o twórcy (przedmiotowa)",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": null,
+      "source": null,
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 1429962,
+      "title": "Faraon. Kukla. [Powieść]",
+      "graph_type": "BookRecord",
+      "record_kind": "książka twórcy (podmiotowa)",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": null,
+      "source": null,
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 1438913,
+      "title": "Wokulski w Paryżu",
+      "graph_type": "BookRecord",
+      "record_kind": "książka o twórcy (przedmiotowa)",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": null,
+      "source": null,
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 445021,
+      "title": "Dwugłos o \"Lalce\" Bolesława Prusa - cykl spotkań z literaturą (1996)",
+      "graph_type": "EventRecord",
+      "record_kind": "impreza.",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": null,
+      "source": null,
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 1744451,
+      "title": "\"Warszawa w <<Lalce>> Bolesława Prusa\" - wystawa poświęcona życiu i twórczości pisarza (2003)",
+      "graph_type": "EventRecord",
+      "record_kind": "impreza.",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": null,
+      "source": null,
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 1872772,
+      "title": "\"Festiwal Wokulskiego\" - związany z twórczością Bolesława Prusa",
+      "graph_type": "EventRecord",
+      "record_kind": "impreza.",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": null,
+      "source": null,
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 1907792,
+      "title": "\"Warszawa \"Lalki\" Bolesława Prusa\" - wystawa (2006)",
+      "graph_type": "EventRecord",
+      "record_kind": "impreza.",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": null,
+      "source": null,
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 1943916,
+      "title": "\"Z pamiętników starego subiekta na motywach powieści \"Lalka\" Bolesława Prusa\" - wystawa",
+      "graph_type": "EventRecord",
+      "record_kind": "impreza.",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": null,
+      "source": null,
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 71773,
+      "title": "Record 71773",
+      "graph_type": "OtherRecord",
+      "record_kind": "kult",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": 1989,
+      "source": "Życie Częstochowy",
+      "annotation": "not. o powstaniu \"Klubu Wokulskiego\"",
+      "matched_fields": [
+        "annotation"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 72414,
+      "title": "Trop platoński w poetyce Prusa",
+      "graph_type": "OtherRecord",
+      "record_kind": "artykuł o twórcy",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": 1989,
+      "source": "Przegląd Humanistyczny",
+      "annotation": "dot. \"Lalki\" i \"Faraona\"",
+      "matched_fields": [
+        "annotation"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 224961,
+      "title": "Zrazy po nelsońsku, czyli jak czytać \"Lalkę\"?",
+      "graph_type": "OtherRecord",
+      "record_kind": "recenzja",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": 120847,
+      "year": 1993,
+      "source": "Teksty Drugie",
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 268073,
+      "title": "The Doll",
+      "graph_type": "OtherRecord",
+      "record_kind": "recenzja",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": 212058,
+      "year": 1993,
+      "source": "New Horizon",
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 335271,
+      "title": "Na początku było słowo recenzyjne... Henryka Sienkiewicz. O dojrzewaniu warsztatu pisarskiego autora \"Lalki\"",
+      "graph_type": "OtherRecord",
+      "record_kind": "artykuł o twórcy",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": 1995,
+      "source": "Ruch Literacki",
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 373803,
+      "title": "Ciemności kryją \"Lalkę\"",
+      "graph_type": "OtherRecord",
+      "record_kind": "recenzja",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": 363987,
+      "year": 1996,
+      "source": "Nowe Książki",
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 373804,
+      "title": "Ciemności kryją \"Lalkę\"",
+      "graph_type": "OtherRecord",
+      "record_kind": "recenzja",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": 316706,
+      "year": 1996,
+      "source": "Nowe Książki",
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 410558,
+      "title": "Dwie nowe monografie \"Lalki\"",
+      "graph_type": "OtherRecord",
+      "record_kind": "recenzja",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": 363987,
+      "year": 1996,
+      "source": "Przegląd Humanistyczny",
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 410562,
+      "title": "Dwie nowe monografie \"Lalki\"",
+      "graph_type": "OtherRecord",
+      "record_kind": "recenzja",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": 316706,
+      "year": 1996,
+      "source": "Przegląd Humanistyczny",
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 424818,
+      "title": "Nowa książka o \"Lalce\"",
+      "graph_type": "OtherRecord",
+      "record_kind": "recenzja",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": 316706,
+      "year": 1997,
+      "source": "Warsztaty Polonistyczne",
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 974030,
+      "title": "O autorze \"Lalki\"",
+      "graph_type": "OtherRecord",
+      "record_kind": "artykuł o twórcy",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": 2002,
+      "source": "Nasz Dziennik",
+      "annotation": "sylwetka; art. popularyzatorski",
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 978226,
+      "title": "Bolesław Prus. Ścieżka autora \"Lalki\"",
+      "graph_type": "OtherRecord",
+      "record_kind": "kult",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": 2003,
+      "source": "Nałęczowskie Wiadomości Kulturalne",
+      "annotation": "opis szlaku spacerowego w Nałęczowie po miejscach związanych z pisarzem; z mapą trasy",
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 986032,
+      "title": "Kafka, lalki i emancypantki",
+      "graph_type": "OtherRecord",
+      "record_kind": "artykuł o utworze",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": 307251,
+      "year": 2002,
+      "source": "Akant [Bydgoszcz]",
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 1855431,
+      "title": "Z autorem \"Lalki\" po Krakowskim Przedmieściu",
+      "graph_type": "OtherRecord",
+      "record_kind": "artykuł o twórcy",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": 2012,
+      "source": "Stolica",
+      "annotation": "nt. związków pisarza z Warszawą",
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 1857213,
+      "title": "Ożywianie lalki",
+      "graph_type": "OtherRecord",
+      "record_kind": "artykuł o twórcy",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": 2012,
+      "source": "Stolica",
+      "annotation": "nt. fascynacji pisarza Warszawą",
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 18054,
+      "title": "Lalka [fragm. pow.].",
+      "graph_type": "PublicationRecord",
+      "record_kind": "proza",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": 1988,
+      "source": "Przegląd Polski = Polish Review",
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    },
+    {
+      "pbl_id": 300434,
+      "title": "Lalka [pow., fragm.:] Kupiec galanteryjny sprzedaje portmonetki",
+      "graph_type": "PublicationRecord",
+      "record_kind": "proza",
+      "section": "Hasła osobowe (literatura polska) - P",
+      "parent_pbl_id": null,
+      "year": 1994,
+      "source": "Gwiazda Polarna",
+      "annotation": null,
+      "matched_fields": [
+        "title"
+      ],
+      "decision": null,
+      "user_notes": null
+    }
+  ]
+}

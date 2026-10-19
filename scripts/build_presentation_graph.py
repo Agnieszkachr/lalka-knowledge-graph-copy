@@ -32,6 +32,7 @@ Presentation relationships:
     ADAPTED_AS
     HAS_EDITION
     HAS_RECORD
+    REVIEWS
     RELATED_TO
     AUTHORED_BY
     PUBLISHED_BY
@@ -64,6 +65,15 @@ layer as Publication:
     OtherRecord
 
 The original PBL type is preserved in the `original_type` field.
+
+Records attached to those records (second PBL hierarchy level)
+are also included:
+
+    review       -- REVIEWS    --> reviewed record
+    other record <-- HAS_RECORD -- parent record
+
+The same article filed by PBL under several headings is represented
+by a single Publication node (see deduplication_key).
 
 This distinction allows the presentation layer to use a simple,
 user-oriented model while preserving the technical information
@@ -103,18 +113,88 @@ OUTPUT_FILE = PROJECT_DIR / "data" / "lalka_presentation_graph.json"
 # =============================================================================
 
 """
-These records have been manually verified as screen adaptations
-of Lalka.
+These records have been manually verified as adaptations of Lalka.
+
+PBL files adaptations under the creator's heading, not under the
+work record, so they cannot be reconstructed from CHILD_OF.
+
+Screen adaptations:
+    304249  film (dir. W. J. Has)
+    136679  TV series (dir. R. Ber)
+
+Radio and theatre (record type AU/SZ, title "Lalka", author
+Bolesław Prus, PBL author 1082):
+    242186, 364636, 413000, 413972, 1051082  radio broadcasts
+    1513883  "Lalka. Prem. 2012", adapt. and dir. Bogdan Kokotek
 
 The relationships are added only to the presentation layer.
 
 The source PBL graph is not modified.
 """
 
-MANUAL_LALKA_ADAPTATIONS = [
-    "record:304249",
-    "record:136679",
-]
+MANUAL_LALKA_ADAPTATIONS = {
+    "record:304249": "film",
+    "record:136679": "tv_series",
+    "record:242186": "radio",
+    "record:364636": "radio",
+    "record:413000": "radio",
+    "record:413972": "radio",
+    "record:1051082": "radio",
+    "record:1513883": "theatre",
+}
+
+
+# =============================================================================
+# MANUALLY VERIFIED EDITION GROUPS
+# =============================================================================
+
+"""
+Verified edition records that describe volumes of one edition.
+
+1348677, 1348678, 1348680: Świat Książki - Bertelsmann Media 2007,
+three volumes ("Tekst wg: Pisma. T. 11-13, Warszawa 1935").
+"""
+
+EDITION_GROUPS = {
+    "swiat-ksiazki-2007": [
+        1348677,
+        1348678,
+        1348680,
+    ],
+}
+
+
+# =============================================================================
+# PUBLISHER ALIASES
+# =============================================================================
+
+"""
+PBL publisher identifiers describing the same publisher.
+
+alias PBL ID -> canonical PBL ID
+
+The original identifiers and names are preserved in the
+`pbl_ids` and `name_variants` properties of the canonical node.
+"""
+
+PUBLISHER_ALIASES = {
+    # Zakład Narodowy im. Ossolińskich
+    3722: 87,
+
+    # Eksmo (EKSMO-Press was its earlier name)
+    125157: 25550,
+    35903: 25550,
+
+    # Zielona Sowa
+    67034: 26180,
+
+    # Świat Książki
+    25733: 20551,
+}
+
+
+# PBL record kind of reviews.
+REVIEW_RECORD_KIND = "recenzja"
 
 
 # =============================================================================
@@ -235,6 +315,43 @@ def edition_display_title(title):
     return value.strip() or "Lalka"
 
 
+def normalize_title(title):
+    """Return a title normalized for deduplication."""
+
+    value = (title or "").lower()
+    value = re.sub(r"[^\w]+", " ", value)
+
+    return value.strip()
+
+
+def canonical_publisher_id(pbl_id):
+    """Return the canonical PBL ID of a publisher."""
+
+    return PUBLISHER_ALIASES.get(
+        int(pbl_id),
+        int(pbl_id),
+    )
+
+
+def edition_group_id(pbl_id):
+    """Return the edition group of a verified edition record."""
+
+    for group_id, record_ids in EDITION_GROUPS.items():
+
+        if pbl_id in record_ids:
+            return group_id
+
+    return None
+
+
+def is_translation(edition):
+    """Return whether a verified edition record is a translation."""
+
+    flags = edition.get("review_flags") or ""
+
+    return "przekład" in flags
+
+
 # =============================================================================
 # PRESENTATION TYPE
 # =============================================================================
@@ -283,6 +400,15 @@ class PresentationGraphBuilder:
 
         # Prevent duplicate presentation relationships.
         self.edge_keys = set()
+
+        # Duplicate PBL records: record ID -> presentation node ID.
+        self.record_aliases = {}
+        self.deduplication_index = {}
+
+        # Canonical publisher ID -> {pbl_id: (name, city)}
+        self.publisher_variants = defaultdict(dict)
+
+        self.snapshot_consistency = None
 
         # ---------------------------------------------------------------------
         # Source graph indexes
@@ -420,6 +546,165 @@ class PresentationGraphBuilder:
                 edge[key] = value
 
         self.edges.append(edge)
+
+    # =========================================================================
+    # DEDUPLICATION
+    # =========================================================================
+
+    def deduplication_key(self, record):
+        """
+        Return the key identifying the same publication.
+
+        PBL may describe one article in several records, e.g. once
+        under each of the two screen adaptations.
+
+        Only records with a title and a bibliographic source are
+        deduplicated.
+        """
+
+        properties = record.get("properties") or {}
+
+        title = normalize_title(
+            record.get("label")
+        )
+
+        if not title or properties.get("source_id") is None:
+            return None
+
+        authors = sorted(
+            edge.get("source")
+            for edge in self.incoming.get(node_id(record), [])
+            if edge_relationship(edge) == "AUTHOR_OF"
+        )
+
+        return (
+            tuple(authors),
+            title,
+            properties.get("source_id"),
+            properties.get("source_year"),
+            properties.get("source_number"),
+            properties.get("source_pages"),
+        )
+
+    def presentation_record_id(self, record):
+        """
+        Return the presentation node ID for a source record.
+
+        Duplicates are mapped to the first record with the same key.
+        """
+
+        record_id = node_id(record)
+
+        if record_id in self.record_aliases:
+            return self.record_aliases[record_id]
+
+        key = self.deduplication_key(record)
+
+        if key is None:
+            self.record_aliases[record_id] = record_id
+            return record_id
+
+        canonical_id = self.deduplication_index.setdefault(
+            key,
+            record_id,
+        )
+
+        self.record_aliases[record_id] = canonical_id
+
+        if canonical_id != record_id and canonical_id in self.nodes:
+
+            merged = self.nodes[canonical_id]["properties"].setdefault(
+                "merged_pbl_ids",
+                [],
+            )
+
+            merged.append(
+                (record.get("properties") or {}).get("pbl_id")
+            )
+
+        return canonical_id
+
+    def add_record(
+        self,
+        record,
+        role,
+        **properties,
+    ):
+        """Add a source record and return its presentation node ID."""
+
+        record_id = self.presentation_record_id(
+            record
+        )
+
+        self.add_node(
+            node_id_value=record_id,
+            presentation_type_value=get_presentation_type(
+                node_type(record)
+            ),
+            label=node_label(record),
+            original_node=record,
+            role=role,
+            **properties,
+        )
+
+        return record_id
+
+    # =========================================================================
+    # PUBLISHERS
+    # =========================================================================
+
+    def add_publisher(
+        self,
+        pbl_id,
+        name,
+        city,
+        role,
+        original_node=None,
+    ):
+        """Add a publisher under its canonical PBL identifier."""
+
+        canonical_id = canonical_publisher_id(pbl_id)
+        presentation_id = f"publisher:{canonical_id}"
+
+        self.publisher_variants[canonical_id][int(pbl_id)] = (
+            name,
+            city,
+        )
+
+        self.add_node(
+            node_id_value=presentation_id,
+            presentation_type_value="Publisher",
+            label=name,
+            original_node=original_node,
+            pbl_id=canonical_id,
+            city=city,
+            role=role,
+        )
+
+        return presentation_id
+
+    def finalize_publishers(self):
+        """Store all PBL identifiers and names of merged publishers."""
+
+        for canonical_id, variants in self.publisher_variants.items():
+
+            node = self.nodes[f"publisher:{canonical_id}"]
+
+            if canonical_id in variants:
+
+                name, city = variants[canonical_id]
+                node["label"] = name
+                node["properties"]["pbl_id"] = canonical_id
+
+                if city:
+                    node["properties"]["city"] = city
+
+            if len(variants) > 1:
+
+                node["properties"]["pbl_ids"] = sorted(variants)
+                node["properties"]["name_variants"] = sorted(
+                    {name for name, _ in variants.values()}
+                )
 
     # =========================================================================
     # ROOT WORK
@@ -595,16 +880,12 @@ class PresentationGraphBuilder:
 
         for record in direct_records:
 
-            record_id = node_id(record)
-
-            if not record_id:
+            if not node_id(record):
                 continue
-
-            original_type = node_type(record)
 
             presentation_type_value = (
                 get_presentation_type(
-                    original_type
+                    node_type(record)
                 )
             )
 
@@ -612,13 +893,8 @@ class PresentationGraphBuilder:
                 presentation_type_value
             )
 
-            self.add_node(
-                node_id_value=record_id,
-                presentation_type_value=(
-                    presentation_type_value
-                ),
-                label=node_label(record),
-                original_node=record,
+            record_id = self.add_record(
+                record,
                 role=role,
                 root_relation="direct_child_of_lalka",
             )
@@ -648,8 +924,8 @@ class PresentationGraphBuilder:
         The source PBL graph is not modified.
         """
 
-        for adaptation_id in (
-            MANUAL_LALKA_ADAPTATIONS
+        for adaptation_id, medium in (
+            MANUAL_LALKA_ADAPTATIONS.items()
         ):
 
             adaptation = self.source_nodes.get(
@@ -670,7 +946,8 @@ class PresentationGraphBuilder:
                 presentation_type_value="Adaptation",
                 label=node_label(adaptation),
                 original_node=adaptation,
-                role="screen_adaptation",
+                role="adaptation",
+                medium=medium,
                 root_relation="manually_verified",
             )
 
@@ -703,7 +980,8 @@ class PresentationGraphBuilder:
             properties = {
                 key: value
                 for key, value in edition.items()
-                if key != "publishers" and value is not None
+                if key not in {"publishers", "original_language"}
+                and value is not None
             }
             properties.update({
                 "pbl_type": "KS",
@@ -712,6 +990,10 @@ class PresentationGraphBuilder:
                 "publisher_city": [
                     item["city"] for item in publishers if item.get("city")
                 ],
+                "is_translation": is_translation(edition),
+                "edition_group": edition_group_id(edition["pbl_id"]),
+                # Raw ZA_JEZYK_ORYGINALU; not the language of this edition.
+                "za_jezyk_oryginalu_raw": edition.get("original_language"),
             })
 
             self.add_node(
@@ -729,13 +1011,10 @@ class PresentationGraphBuilder:
             )
 
             for publisher in publishers:
-                publisher_id = f"publisher:{publisher['pbl_id']}"
-                self.add_node(
-                    node_id_value=publisher_id,
-                    presentation_type_value="Publisher",
-                    label=publisher["name"],
-                    pbl_id=publisher["pbl_id"],
-                    city=publisher.get("city"),
+                publisher_id = self.add_publisher(
+                    publisher["pbl_id"],
+                    publisher["name"],
+                    publisher.get("city"),
                     role="edition_publisher",
                 )
                 self.add_edge(
@@ -744,6 +1023,72 @@ class PresentationGraphBuilder:
                     relationship="PUBLISHED_BY",
                     relation_source="pbl_snapshot",
                 )
+
+    def check_editions_against_source(self, editions_data):
+        """
+        Compare curated editions (Oracle snapshot) with the source graph
+        (basic extraction).
+
+        Both inputs come from different PBL exports, so differences in
+        titles, years or publishers are reported.
+        """
+
+        differences = []
+
+        for edition in editions_data.get("editions", []):
+
+            record_id = f"record:{edition['pbl_id']}"
+            record = self.source_nodes.get(record_id)
+
+            if not record:
+                differences.append(
+                    f"{record_id}: missing in the source graph"
+                )
+                continue
+
+            properties = record.get("properties") or {}
+
+            if node_label(record) != edition.get("title"):
+                differences.append(
+                    f"{record_id}: title differs"
+                )
+
+            source_year = properties.get("publication_year")
+
+            if (
+                source_year is not None
+                and edition.get("publication_year_source") == "ZA_ROK_WYDANIA"
+                and int(source_year) != edition.get("publication_year")
+            ):
+                differences.append(
+                    f"{record_id}: publication year differs"
+                )
+
+            source_publishers = {
+                edge.get("target")
+                for edge in self.outgoing.get(record_id, [])
+                if edge_relationship(edge) == "PUBLISHED_BY"
+            }
+
+            edition_publishers = {
+                f"publisher:{item['pbl_id']}"
+                for item in edition.get("publishers", [])
+            }
+
+            if source_publishers != edition_publishers:
+                differences.append(
+                    f"{record_id}: publishers differ"
+                )
+
+        for difference in differences:
+            print(f"WARNING: {difference}")
+
+        self.snapshot_consistency = {
+            "checked_editions": len(editions_data.get("editions", [])),
+            "differences": differences,
+        }
+
+        return differences
 
     # =========================================================================
     # ADAPTATION CHILD RECORDS
@@ -833,16 +1178,12 @@ class PresentationGraphBuilder:
 
             for child in child_records:
 
-                child_id = node_id(child)
-
-                if not child_id:
+                if not node_id(child):
                     continue
-
-                original_type = node_type(child)
 
                 presentation_type_value = (
                     get_presentation_type(
-                        original_type
+                        node_type(child)
                     )
                 )
 
@@ -850,13 +1191,8 @@ class PresentationGraphBuilder:
                     presentation_type_value
                 )
 
-                self.add_node(
-                    node_id_value=child_id,
-                    presentation_type_value=(
-                        presentation_type_value
-                    ),
-                    label=node_label(child),
-                    original_node=child,
+                child_id = self.add_record(
+                    child,
                     role=role,
                     root_relation="child_of_adaptation",
                     parent_presentation_id=adaptation_id,
@@ -869,6 +1205,86 @@ class PresentationGraphBuilder:
                     relation_source="pbl_hierarchy",
                     source_relationship="CHILD_OF",
                 )
+
+    # =========================================================================
+    # SECOND HIERARCHY LEVEL
+    # =========================================================================
+
+    def add_nested_records(self):
+        """
+        Add records attached to records already related to Lalka
+        or to its adaptations (second PBL hierarchy level).
+
+        Reviews receive:
+
+            review -- REVIEWS --> reviewed record
+
+        Other records receive:
+
+            parent record -- HAS_RECORD --> record
+        """
+
+        parents = [
+            (source_id, presentation_id)
+            for source_id, presentation_id in self.record_aliases.items()
+            if self.nodes[presentation_id].get("properties", {}).get(
+                "root_relation"
+            ) in {
+                "direct_child_of_lalka",
+                "child_of_adaptation",
+            }
+        ]
+
+        for source_parent_id, parent_id in parents:
+
+            for edge in self.incoming.get(source_parent_id, []):
+
+                if edge_relationship(edge) != "CHILD_OF":
+                    continue
+
+                child = self.source_nodes.get(
+                    edge.get("source")
+                )
+
+                if not child:
+                    continue
+
+                presentation_type_value = get_presentation_type(
+                    node_type(child)
+                )
+
+                child_id = self.add_record(
+                    child,
+                    role=self.record_role(
+                        presentation_type_value
+                    ),
+                    root_relation="nested_record",
+                    parent_presentation_id=parent_id,
+                )
+
+                record_kind = (
+                    child.get("properties") or {}
+                ).get("record_kind")
+
+                if record_kind == REVIEW_RECORD_KIND:
+
+                    self.add_edge(
+                        source=child_id,
+                        target=parent_id,
+                        relationship="REVIEWS",
+                        relation_source="pbl_hierarchy",
+                        source_relationship="CHILD_OF",
+                    )
+
+                else:
+
+                    self.add_edge(
+                        source=parent_id,
+                        target=child_id,
+                        relationship="HAS_RECORD",
+                        relation_source="pbl_hierarchy",
+                        source_relationship="CHILD_OF",
+                    )
 
     # =========================================================================
     # RELATED METADATA
@@ -900,6 +1316,16 @@ class PresentationGraphBuilder:
                 record_id
             )
 
+        # Metadata of merged duplicate records.
+        for source_id, presentation_id in self.record_aliases.items():
+
+            if source_id != presentation_id:
+
+                self.add_metadata_for_record(
+                    source_id,
+                    target_id=presentation_id,
+                )
+
     # =========================================================================
     # METADATA
     # =========================================================================
@@ -907,20 +1333,27 @@ class PresentationGraphBuilder:
     def add_metadata_for_record(
         self,
         record_id,
+        target_id=None,
     ):
         """
         Add authors, publishers and sources for a record.
 
         Only metadata already explicitly represented in the
         source graph is used.
+
+        target_id is the presentation node receiving the metadata
+        (differs from record_id for merged duplicates).
         """
+
+        source_record_id = record_id
+        record_id = target_id or record_id
 
         # ---------------------------------------------------------------------
         # AUTHORS
         # ---------------------------------------------------------------------
 
         for edge in self.incoming.get(
-            record_id,
+            source_record_id,
             [],
         ):
 
@@ -959,17 +1392,15 @@ class PresentationGraphBuilder:
         # ---------------------------------------------------------------------
 
         for edge in self.outgoing.get(
-            record_id,
+            source_record_id,
             [],
         ):
 
             if edge_relationship(edge) != "PUBLISHED_BY":
                 continue
 
-            publisher_id = edge.get("target")
-
             publisher = self.source_nodes.get(
-                publisher_id
+                edge.get("target")
             )
 
             if not publisher:
@@ -978,12 +1409,14 @@ class PresentationGraphBuilder:
             if node_type(publisher) != "Publisher":
                 continue
 
-            self.add_node(
-                node_id_value=publisher_id,
-                presentation_type_value="Publisher",
-                label=node_label(publisher),
-                original_node=publisher,
+            publisher_properties = publisher.get("properties") or {}
+
+            publisher_id = self.add_publisher(
+                publisher_properties.get("pbl_id"),
+                node_label(publisher),
+                publisher_properties.get("city"),
                 role="record_publisher",
+                original_node=publisher,
             )
 
             self.add_edge(
@@ -998,7 +1431,7 @@ class PresentationGraphBuilder:
         # ---------------------------------------------------------------------
 
         for edge in self.outgoing.get(
-            record_id,
+            source_record_id,
             [],
         ):
 
@@ -1054,9 +1487,54 @@ class PresentationGraphBuilder:
                 edge.get("relationship")
             ] += 1
 
+        editions = [
+            node
+            for node in self.nodes.values()
+            if node.get("presentation_type") == "Edition"
+        ]
+
+        edition_units = {
+            node["properties"].get("edition_group") or node["id"]
+            for node in editions
+        }
+
+        adaptation_media = defaultdict(int)
+
+        for node in self.nodes.values():
+
+            if node.get("presentation_type") == "Adaptation":
+
+                adaptation_media[
+                    node["properties"].get("medium", "unknown")
+                ] += 1
+
+        merged_records = sorted(
+            source_id
+            for source_id, presentation_id in self.record_aliases.items()
+            if source_id != presentation_id
+        )
+
         return {
             "nodes": len(self.nodes),
             "edges": len(self.edges),
+
+            "editions": {
+                "records": len(editions),
+                "translations": sum(
+                    1
+                    for node in editions
+                    if node["properties"].get("is_translation")
+                ),
+                "edition_units": len(edition_units),
+            },
+
+            "adaptation_media": dict(
+                sorted(
+                    adaptation_media.items()
+                )
+            ),
+
+            "merged_duplicate_records": merged_records,
 
             "node_types": dict(
                 sorted(
@@ -1097,6 +1575,9 @@ class PresentationGraphBuilder:
                 "curated_editions":
                     "lalka_editions_verified.json",
 
+                "snapshot_consistency":
+                    self.snapshot_consistency,
+
                 "root":
                     LALKA_ID,
 
@@ -1124,6 +1605,7 @@ class PresentationGraphBuilder:
                         "ADAPTED_AS",
                         "HAS_EDITION",
                         "HAS_RECORD",
+                        "REVIEWS",
                         "RELATED_TO",
                         "AUTHORED_BY",
                         "PUBLISHED_BY",
@@ -1132,9 +1614,17 @@ class PresentationGraphBuilder:
                 },
 
                 "manual_relationships": {
-                    "adaptations": (
+                    "adaptations": list(
                         MANUAL_LALKA_ADAPTATIONS
                     ),
+                    "adaptation_media": (
+                        MANUAL_LALKA_ADAPTATIONS
+                    ),
+                    "edition_groups": EDITION_GROUPS,
+                    "publisher_aliases": {
+                        str(alias): canonical
+                        for alias, canonical in PUBLISHER_ALIASES.items()
+                    },
                 },
 
                 "statistics":
@@ -1274,6 +1764,18 @@ def main():
     editions_data = load_json(EDITIONS_FILE)
 
     print(
+        "Checking curated editions against the source graph..."
+    )
+
+    differences = graph.check_editions_against_source(
+        editions_data
+    )
+
+    print(
+        f"  Differences: {len(differences)}"
+    )
+
+    print(
         "Adding verified editions..."
     )
 
@@ -1290,6 +1792,16 @@ def main():
     graph.add_adaptation_child_records()
 
     # -------------------------------------------------------------------------
+    # SECOND HIERARCHY LEVEL
+    # -------------------------------------------------------------------------
+
+    print(
+        "Adding records attached to related records..."
+    )
+
+    graph.add_nested_records()
+
+    # -------------------------------------------------------------------------
     # RELATED METADATA
     # -------------------------------------------------------------------------
 
@@ -1298,6 +1810,8 @@ def main():
     )
 
     graph.add_related_metadata()
+
+    graph.finalize_publishers()
 
     # -------------------------------------------------------------------------
     # EXPORT
