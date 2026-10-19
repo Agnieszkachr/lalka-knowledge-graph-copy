@@ -1,0 +1,28 @@
+name: Reproducibility
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Rebuild graphs and visualization
+        run: |
+          python scripts/build_graph.py
+          python scripts/build_presentation_graph.py
+          python scripts/list_reception_candidates.py
+          python scripts/visualize_graph.py
+
+      - name: Check that committed files match the rebuild
+        run: git diff --exit-code -- data docs

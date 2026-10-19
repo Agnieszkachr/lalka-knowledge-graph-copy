@@ -1,0 +1,9 @@
+# Building the graphs and the visualization
+beautifulsoup4==4.15.0
+
+# Extraction (scripts/extract_lalka.py) and inspection of raw data
+pandas==3.0.5
+
+# Oracle connection; used only by scripts/extract_lalka.py.
+# Pin the version used with the PBL Oracle Client after the next extraction.
+oracledb>=2.0
