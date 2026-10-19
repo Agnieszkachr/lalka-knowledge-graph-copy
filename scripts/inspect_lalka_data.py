@@ -281,7 +281,7 @@ def print_title_report(
 
     columns = [
         "ZA_ZAPIS_ID",
-        "ZAPIS_NADRZEDNY",
+        "ZA_ZA_ZAPIS_ID",
         "ZA_TYPE",
         "ZA_RZ_RODZAJ1_ID",
         "RZ_NAZWA",
@@ -412,7 +412,7 @@ def print_author_report(
         related_records,
         columns=[
             "ZA_ZAPIS_ID",
-            "ZAPIS_NADRZEDNY",
+            "ZA_ZA_ZAPIS_ID",
             "ZA_TYPE",
             "RZ_NAZWA",
             "ZA_TYTUL",
@@ -527,7 +527,7 @@ def print_creator_report(
         related_records,
         columns=[
             "ZA_ZAPIS_ID",
-            "ZAPIS_NADRZEDNY",
+            "ZA_ZA_ZAPIS_ID",
             "ZA_TYPE",
             "RZ_NAZWA",
             "ZA_TYTUL",
@@ -784,20 +784,28 @@ def inspect_records():
     # Hierarchy
     # -------------------------------------------------------------------------
 
-    if "ZAPIS_NADRZEDNY" in df.columns:
+    print_subheader(
+        "Record hierarchy"
+    )
 
-        print_subheader(
-            "Record hierarchy"
+    if "ZA_ZA_ZAPIS_ID" not in df.columns:
+
+        print(
+            "ERROR: parent record column ZA_ZA_ZAPIS_ID "
+            "is missing. The record hierarchy cannot be "
+            "reconstructed."
         )
 
+    else:
+
         with_parent = (
-            df["ZAPIS_NADRZEDNY"]
+            df["ZA_ZA_ZAPIS_ID"]
             .notna()
             .sum()
         )
 
         without_parent = (
-            df["ZAPIS_NADRZEDNY"]
+            df["ZA_ZA_ZAPIS_ID"]
             .isna()
             .sum()
         )
@@ -815,7 +823,7 @@ def inspect_records():
         )
 
         parent_counts = (
-            df["ZAPIS_NADRZEDNY"]
+            df["ZA_ZA_ZAPIS_ID"]
             .dropna()
             .value_counts()
             .head(20)
@@ -848,7 +856,7 @@ def inspect_records():
         df,
         columns=[
             "ZA_ZAPIS_ID",
-            "ZAPIS_NADRZEDNY",
+            "ZA_ZA_ZAPIS_ID",
             "ZA_TYPE",
             "ZA_RZ_RODZAJ1_ID",
             "RZ_NAZWA",
@@ -1303,7 +1311,7 @@ def inspect_screen_adaptations(
             film_df,
             columns=[
                 "ZA_ZAPIS_ID",
-                "ZAPIS_NADRZEDNY",
+                "ZA_ZA_ZAPIS_ID",
                 "ZA_TYPE",
                 "ZA_RZ_RODZAJ1_ID",
                 "RZ_NAZWA",
@@ -1377,7 +1385,7 @@ def inspect_screen_adaptations(
         title_df,
         columns=[
             "ZA_ZAPIS_ID",
-            "ZAPIS_NADRZEDNY",
+            "ZA_ZA_ZAPIS_ID",
             "ZA_TYPE",
             "RZ_NAZWA",
             "ZA_TYTUL",

@@ -10,7 +10,7 @@ The graph distinguishes between:
 - PBLSection
 - bibliographic record types
 
-Important modelling rule:
+Important modelling rules:
 
     CHILD_OF
 
@@ -29,6 +29,13 @@ Bolesław Prus is connected through:
     Lalka [LiteraryWork]
         |
         +-- CREATED_BY --> Bolesław Prus
+
+PBL_ZAPISY_TWORCY assigns a record to the personal heading of a creator
+("hasło osobowe"). It describes WHERE a record is filed, not WHO wrote it.
+Therefore:
+
+    record of kind "utwór" -- CREATED_BY --> Creator
+    any other record       -- FILED_UNDER --> Creator
 
 This means that the author of a review is NOT incorrectly treated
 as the creator of Lalka, and Bolesław Prus is NOT incorrectly treated
@@ -63,6 +70,22 @@ LALKA_ID = 109715
 INPUT_DIR = Path(__file__).resolve().parents[1] / "data"
 
 OUTPUT_FILE = INPUT_DIR / "lalka_graph.json"
+
+METADATA_FILE = INPUT_DIR / "lalka_extraction_metadata.json"
+
+# Column storing the parent record. The original PBL column name is used
+# by extract_lalka.py and recorded in the extraction metadata.
+DEFAULT_PARENT_FIELD = "ZA_ZA_ZAPIS_ID"
+
+# PBL record kind (RZ_NAZWA) of records representing literary works.
+WORK_RECORD_KIND = "utwór"
+
+REQUIRED_RECORD_FIELDS = {
+    "ZA_ZAPIS_ID",
+    "ZA_TYPE",
+    "RZ_NAZWA",
+    "ZA_TYTUL",
+}
 
 
 # =============================================================================
@@ -156,6 +179,54 @@ def clean_value(value):
     return value
 
 
+def as_int(value):
+    """
+    Return integer-like values as int.
+
+    pandas exports nullable integer columns as floats (e.g. 2001.0).
+    """
+
+    if isinstance(value, float) and value.is_integer():
+        return int(value)
+
+    return value
+
+
+def get_parent_field() -> str:
+    """Return the parent record column recorded in extraction metadata."""
+
+    if not METADATA_FILE.exists():
+        return DEFAULT_PARENT_FIELD
+
+    metadata = load_json(METADATA_FILE)
+
+    return (
+        metadata.get("record_fields", {}).get("parent_record_id")
+        or DEFAULT_PARENT_FIELD
+    )
+
+
+def check_record_fields(records: list[dict], parent_field: str):
+    """Fail if the extracted records do not contain the expected columns."""
+
+    if not records:
+        raise RuntimeError("No records were loaded.")
+
+    required = REQUIRED_RECORD_FIELDS | {parent_field}
+
+    missing = sorted(
+        field
+        for field in required
+        if field not in records[0]
+    )
+
+    if missing:
+        raise RuntimeError(
+            "Extracted records are missing required fields: "
+            + ", ".join(missing)
+        )
+
+
 def get_record_type(record: dict) -> str:
     """
     Convert PBL ZA_TYPE into a graph node type.
@@ -221,7 +292,9 @@ def make_edge(
 class GraphBuilder:
     """Build the Lalka knowledge graph."""
 
-    def __init__(self):
+    def __init__(self, parent_field: str = DEFAULT_PARENT_FIELD):
+
+        self.parent_field = parent_field
 
         self.nodes = {}
         self.edges = []
@@ -338,8 +411,11 @@ class GraphBuilder:
             "pbl_type":
                 record.get("ZA_TYPE"),
 
+            "record_kind":
+                record.get("RZ_NAZWA"),
+
             "parent_id":
-                record.get("ZAPIS_NADRZEDNY"),
+                as_int(record.get(self.parent_field)),
 
             "section_id":
                 record.get("DZ_DZIAL_ID"),
@@ -354,7 +430,7 @@ class GraphBuilder:
                 record.get("ZR_TYTUL"),
 
             "source_year":
-                record.get("ZA_ZRODLO_ROK"),
+                as_int(record.get("ZA_ZRODLO_ROK")),
 
             "source_number":
                 record.get("ZA_ZRODLO_NR"),
@@ -372,7 +448,7 @@ class GraphBuilder:
                 record.get("ZA_WYDAWNICTWA"),
 
             "publication_year":
-                record.get("ZA_ROK_WYDANIA"),
+                as_int(record.get("ZA_ROK_WYDANIA")),
 
             "physical_description":
                 record.get("ZA_OPIS_FIZYCZNY_KSIAZKI"),
@@ -433,7 +509,7 @@ class GraphBuilder:
             )
 
             parent_id = record.get(
-                "ZAPIS_NADRZEDNY"
+                self.parent_field
             )
 
             if child_id is None:
@@ -541,20 +617,24 @@ class GraphBuilder:
     def add_creator_relationships(
         self,
         creators: list[dict],
+        record_kinds: dict[int, str],
     ):
         """
         Add creators of individual records.
 
         Relationship direction:
 
-            Record
+            Work record
                 |
                 +-- CREATED_BY --> Creator
 
-        This relationship is record-specific.
+            Other record
+                |
+                +-- FILED_UNDER --> Creator
 
-        A creator assigned to Lalka is NOT automatically assigned
-        to every review, article, book, etc. that is attached to Lalka.
+        PBL_ZAPISY_TWORCY links a record to the creator's personal
+        heading. Only for records of kind "utwór" does it mean
+        authorship of the work.
         """
 
         for creator in creators:
@@ -605,12 +685,18 @@ class GraphBuilder:
                 last_name=last_name,
             )
 
+            relationship = (
+                "CREATED_BY"
+                if record_kinds.get(record_id) == WORK_RECORD_KIND
+                else "FILED_UNDER"
+            )
+
             self.add_edge(
                 source=record_node_id(
                     record_id
                 ),
                 target=node_id,
-                relationship="CREATED_BY",
+                relationship=relationship,
             )
 
     # -------------------------------------------------------------------------
@@ -951,6 +1037,35 @@ class GraphBuilder:
                 "Hierarchy should use CHILD_OF only."
             )
 
+        # Check that the record hierarchy was reconstructed.
+        child_of_edges = [
+            edge
+            for edge in self.edges
+            if edge["relationship"]
+            == "CHILD_OF"
+        ]
+
+        if not child_of_edges:
+
+            errors.append(
+                "Graph contains no CHILD_OF edges. "
+                f"Check the parent field: {self.parent_field}"
+            )
+
+        # Check that Lalka is connected with its creator.
+        lalka_created_by = [
+            edge
+            for edge in self.edges
+            if edge["source"] == lalka_node
+            and edge["relationship"] == "CREATED_BY"
+        ]
+
+        if not lalka_created_by:
+
+            errors.append(
+                "Lalka has no CREATED_BY relationship."
+            )
+
         if errors:
 
             print()
@@ -997,6 +1112,15 @@ class GraphBuilder:
 
                     "creator_relationship":
                         "CREATED_BY",
+
+                    "creator_relationship_scope":
+                        "records of kind 'utwór' only",
+
+                    "creator_heading_relationship":
+                        "FILED_UNDER",
+
+                    "parent_field":
+                        self.parent_field,
 
                     "publisher_relationship":
                         "PUBLISHED_BY",
@@ -1081,6 +1205,17 @@ def main():
         f"  Publisher relations: {len(publishers)}"
     )
 
+    parent_field = get_parent_field()
+
+    check_record_fields(
+        records,
+        parent_field,
+    )
+
+    print(
+        f"  Parent field: {parent_field}"
+    )
+
     # -------------------------------------------------------------------------
     # Filter invalid records
     # -------------------------------------------------------------------------
@@ -1149,11 +1284,19 @@ def main():
         in valid_record_ids
     ]
 
+    record_kinds = {
+        int(record["ZA_ZAPIS_ID"]): record.get("RZ_NAZWA")
+        for record in valid_records
+        if record.get("ZA_ZAPIS_ID") is not None
+    }
+
     # -------------------------------------------------------------------------
     # Build graph
     # -------------------------------------------------------------------------
 
-    graph = GraphBuilder()
+    graph = GraphBuilder(
+        parent_field=parent_field,
+    )
 
     print(
         "Building record nodes..."
@@ -1186,7 +1329,8 @@ def main():
     )
 
     graph.add_creator_relationships(
-        creators
+        creators,
+        record_kinds,
     )
 
     print(
