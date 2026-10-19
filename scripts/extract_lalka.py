@@ -4,7 +4,7 @@ Extract data from the PBL Oracle database for the "Lalka" project.
 The script extracts:
 - records attached to the work "Lalka",
 - nested records attached to those records,
-- records connected with Bolesław Prus,
+- records connected with Bolesław Prus (selected by PBL author/creator IDs),
 - records connected with the identified screen adaptations of "Lalka",
 - authors,
 - creators,
@@ -56,6 +56,25 @@ LALKA_SCREEN_ADAPTATION_IDS = [
     304249,
     136679,
 ]
+
+# Columns exported as nullable integers. Without an explicit cast pandas
+# stores them as floats when a column contains NULL values (e.g. 2001.0).
+INTEGER_COLUMNS = [
+    "ZA_ZAPIS_ID",
+    "ZA_ZA_ZAPIS_ID",
+    "ZA_RZ_RODZAJ1_ID",
+    "DZ_DZIAL_ID",
+    "ZR_ZRODLO_ID",
+    "ZA_ZRODLO_ROK",
+    "ZA_ROK_WYDANIA",
+    "ZAPIS_ID",
+    "AUTOR_ID",
+    "TWORCA_ID",
+    "WYDAWNICTWO_ID",
+]
+
+# Records in this PBL section are excluded as not yet classified.
+UNCLASSIFIED_SECTION = "-- do ustalenia --"
 
 # Number of hierarchy levels to retrieve
 LALKA_NESTED_LEVELS = 2
@@ -204,12 +223,47 @@ def unique_ids(
     return result
 
 
+def cast_integer_columns(
+    dataframe: pd.DataFrame,
+) -> pd.DataFrame:
+    """
+    Cast ID and year columns to the nullable Int64 type.
+    """
+
+    dataframe = dataframe.copy()
+
+    for column in INTEGER_COLUMNS:
+
+        if column not in dataframe.columns:
+            continue
+
+        numeric = pd.to_numeric(
+            dataframe[column],
+            errors="coerce",
+        )
+
+        # Keep non-integer values (e.g. "1997-1998") unchanged.
+        if (numeric.dropna() % 1 != 0).any():
+            continue
+
+        if numeric.isna().sum() > dataframe[column].isna().sum():
+            continue
+
+        dataframe[column] = numeric.astype("Int64")
+
+    return dataframe
+
+
 def dataframe_to_records(
     dataframe: pd.DataFrame,
 ) -> list[dict]:
     """
     Convert a pandas DataFrame into JSON-compatible dictionaries.
     """
+
+    dataframe = cast_integer_columns(
+        dataframe
+    )
 
     records = dataframe.to_dict(
         orient="records"
@@ -352,10 +406,70 @@ def get_prus_record_ids(
 ) -> list[int]:
     """
     Find records where Bolesław Prus appears
-    as an author or creator.
+    as an author (PRUS_AUTOR_ID) or creator (PRUS_TWORCA_ID).
+
+    The selection uses PBL identifiers, not names, so that
+    homonyms and spelling variants do not change the scope.
     """
 
-    query = f"""
+    query = """
+        SELECT DISTINCT
+
+            za_zapis_id
+
+        FROM (
+
+            SELECT
+                a.zaam_za_zapis_id AS za_zapis_id
+
+            FROM IBL_OWNER.pbl_zapisy_autorzy a
+
+            WHERE a.zaam_am_autor_id = :autor_id
+
+            UNION
+
+            SELECT
+                ztw.zatw_za_zapis_id AS za_zapis_id
+
+            FROM IBL_OWNER.pbl_zapisy_tworcy ztw
+
+            WHERE ztw.zatw_tw_tworca_id = :tworca_id
+        )
+
+        ORDER BY
+            za_zapis_id
+    """
+
+    dataframe = pd.read_sql(
+        query,
+        con=connection,
+        params={
+            "autor_id": PRUS_AUTOR_ID,
+            "tworca_id": PRUS_TWORCA_ID,
+        },
+    )
+
+    if dataframe.empty:
+        return []
+
+    return unique_ids(
+        dataframe[
+            "ZA_ZAPIS_ID"
+        ].tolist()
+    )
+
+
+def get_prus_record_ids_by_name(
+    connection: oracledb.Connection,
+) -> list[int]:
+    """
+    Find records where an author or creator named Bolesław Prus appears.
+
+    Diagnostic only: compared with get_prus_record_ids() to detect
+    homonyms or records attached to other Prus identifiers.
+    """
+
+    query = """
         SELECT DISTINCT
 
             z.za_zapis_id
@@ -414,6 +528,38 @@ def get_prus_record_ids(
 # =============================================================================
 # Main PBL records
 # =============================================================================
+
+def compare_prus_selections(
+    ids_by_id: list[int],
+    ids_by_name: list[int],
+) -> dict:
+    """
+    Compare ID-based and name-based selection of Prus records.
+    """
+
+    by_id = set(ids_by_id)
+    by_name = set(ids_by_name)
+
+    only_by_name = sorted(by_name - by_id)
+    only_by_id = sorted(by_id - by_name)
+
+    print(
+        f"  Records matched by name only: "
+        f"{len(only_by_name)}"
+    )
+
+    print(
+        f"  Records matched by ID only: "
+        f"{len(only_by_id)}"
+    )
+
+    return {
+        "selected_by_id": len(by_id),
+        "matched_by_name": len(by_name),
+        "only_by_name": only_by_name,
+        "only_by_id": only_by_id,
+    }
+
 
 def get_full_records(
     ids: list[int],
@@ -535,15 +681,37 @@ def get_full_records(
         ]
     )
 
-    # Remove records marked as not yet classified.
-    if "DZ_NAZWA" in dataframe.columns:
-
-        dataframe = dataframe[
-            dataframe["DZ_NAZWA"]
-            != "-- do ustalenia --"
-        ]
-
     return dataframe
+
+
+def split_unclassified_records(
+    dataframe: pd.DataFrame,
+) -> tuple[pd.DataFrame, list[int]]:
+    """
+    Remove records marked as not yet classified.
+
+    Returns the remaining records and the IDs of excluded records.
+    """
+
+    if (
+        dataframe.empty
+        or "DZ_NAZWA" not in dataframe.columns
+    ):
+        return dataframe, []
+
+    mask = (
+        dataframe["DZ_NAZWA"]
+        == UNCLASSIFIED_SECTION
+    )
+
+    excluded_ids = unique_ids(
+        dataframe.loc[
+            mask,
+            "ZA_ZAPIS_ID",
+        ].tolist()
+    )
+
+    return dataframe[~mask], excluded_ids
 
 
 # =============================================================================
@@ -1021,6 +1189,13 @@ def main() -> None:
             f"{len(prus_direct_ids)}"
         )
 
+        prus_selection_check = compare_prus_selections(
+            prus_direct_ids,
+            get_prus_record_ids_by_name(
+                connection
+            ),
+        )
+
         prus_ids = get_descendants(
             prus_direct_ids,
             connection,
@@ -1085,6 +1260,31 @@ def main() -> None:
             f"{len(records_df)}"
         )
 
+        records_df, excluded_record_ids = (
+            split_unclassified_records(
+                records_df
+            )
+        )
+
+        print(
+            f"  Excluded unclassified records: "
+            f"{len(excluded_record_ids)}"
+        )
+
+        # Relations are retrieved only for exported records,
+        # so that no relation points to a missing record.
+        exported_record_ids = unique_ids(
+            records_df[
+                "ZA_ZAPIS_ID"
+            ].tolist()
+        )
+
+        missing_record_ids = sorted(
+            set(all_record_ids)
+            - set(exported_record_ids)
+            - set(excluded_record_ids)
+        )
+
         # ---------------------------------------------------------------------
         # 6. Adaptation diagnostic report
         #
@@ -1107,7 +1307,7 @@ def main() -> None:
         )
 
         authors_df = get_authors(
-            all_record_ids,
+            exported_record_ids,
             connection,
         )
 
@@ -1125,7 +1325,7 @@ def main() -> None:
         )
 
         creators_df = get_creators(
-            all_record_ids,
+            exported_record_ids,
             connection,
         )
 
@@ -1143,7 +1343,7 @@ def main() -> None:
         )
 
         publishers_df = get_publishers(
-            all_record_ids,
+            exported_record_ids,
             connection,
         )
 
@@ -1254,6 +1454,27 @@ def main() -> None:
                 "record_kind_name":
                     "RZ_NAZWA",
             },
+
+            "prus_selection": {
+
+                "method":
+                    "author/creator PBL IDs",
+
+                "name_check":
+                    prus_selection_check,
+            },
+
+            "excluded_records": {
+
+                "reason":
+                    f"section {UNCLASSIFIED_SECTION}",
+
+                "ids":
+                    excluded_record_ids,
+            },
+
+            "missing_records":
+                missing_record_ids,
 
             "counts": {
 
